@@ -1,0 +1,17 @@
+.little{
+    font-weight:900 ;
+}
+.small{
+
+}
+table tr td{
+    font-weight: 500;
+    padding-right: 20px;
+}
+table tr{
+    margin: 5px;
+    height: 5px;
+}
+ol li{
+    list-style: none;
+}

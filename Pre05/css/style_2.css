@@ -1,0 +1,32 @@
+.left{
+    float: left;
+
+    background-color: #65A4FA;
+    color: #fff;
+    text-align: center;
+    width: 200px;
+    height: 800px;
+    border:1px solid #65A4FA;
+}
+.main{
+    margin: 10px;
+}
+ol li{
+    list-style: none;
+}
+ol{
+    float: left;
+}
+ol li table .little{
+    font-weight:900 ;
+}
+.small{
+
+}
+table tr td{
+    font-weight: 500;
+}
+table tr{
+    margin: 5px;
+    height: 5px;
+}
