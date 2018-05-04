@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/final.css"/>
+    <!--<script src="./js/final.js"></script>-->
+
+</head>
+<body>
+    <div class="Thehead">
+        <div class="head_main">
+            <ul>
+                <li><a href="#">Github</a></li>
+                <li><a href="#">Register</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+            <p>Logo</p>
+        </div>
+    </div>
+    <div class="bannerHead">
+        <div id="banner">
+            <ul>
+                <li class="on">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+            <div id="banner_list">
+                <a href="#" target="_self" class="active"><img src="imgs/1.jpg" title="jquery插件库1" alt="jquery插件库1"></a>
+                <a href="#" target="_self"><img src="imgs/2.jpg" title="jquery插件库2" alt="jquery插件库2"></a>
+                <a href="#" target="_self"><img src="imgs/3.jpg" title="jquery插件库3" alt="jquery插件库3"></a>
+                <a href="#" target="_self"><img src="imgs/4.jpg" title="jquery插件库4" alt="jquery插件库4"></a>
+            </div>
+        </div>
+    </div>
+    <div class="mainSide clearfix">
+        <div class="topSide">
+            <section>
+              <ul>
+                    <li><a href="#" class="activeSide">HOME</a></li>
+                    <li><a href="#">PROFILE</a></li>
+                    <li><a href="#">ABOUT</a></li>
+              </ul>
+            </section>
+        </div>
+        <div class="SideCore">
+            <div class="home activeCore">
+                <article>home 1</article><article>home 2</article><article>home 3</article>
+                <article>home 4</article><article>home 5</article><article>home 6</article>
+                <article>home 7</article><article>home 8</article>
+            </div>
+
+        </div>
+    </div>
+    <div class="foot">
+        <p>@2018 life.baidu.com</p>
+    </div>
+</body>
+<script>
+    /*var tabs=document.querySelectorAll('#banner ul li');
+    var panels=document.querySelectorAll('#banner_list a');
+    alert(panels.length);
+    for(var i = 0; i < tabs.length; i++) {
+        var tab = tabs[i];
+        setTabHandler(tab,i);
+    }*/
+    $(function () {
+        $("#banner ul li").off('click').on("click", function () {
+            $("#banner_list li a.active").removeClass("active");
+            $(this).addClass("active");
+            $("#banner ul li").addClass("on");
+        })
+    });
+</script>
+<script>
+    /*function setTabHandler(tab,i){
+        tab.onclick = function(){
+            for(i = 0; i < tabs.length; i++) {
+                if(tabs[i].getAttribute('class')) {
+                    tabs[i].removeAttribute('class');
+                }
+            }
+            for(i = 0; i < panels.length; i++) {
+                if(panels[i].getAttribute('class')) {
+                    panels[i].removeAttribute('class');
+                }
+            }
+            for(var j=0;j<tabs.length;j++){
+                if(tabs[j].onclick()){
+                    alert(tabs[j].onclick());
+                    alert(j);
+                    panels[j].setAttribute('class', 'active');
+                    tabs[j].setAttribute('class', 'on');
+                }
+            }
+        }
+    }*/
+
+
+</script>
+</html>

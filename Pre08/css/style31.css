@@ -1,0 +1,30 @@
+.main{
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: yellow;
+    border: 2px solid blueviolet;
+}
+.theFirst{
+    float: left;
+    box-sizing: border-box;
+}
+.head{
+    *float: left;
+    width: 200px;
+}
+.foot{
+    float: right;
+    width: 200px;
+    right: 0;
+    top:0;
+    margin-left: 30px;
+}
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}

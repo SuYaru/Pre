@@ -1,0 +1,26 @@
+.main{
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: yellow;
+    border: 2px solid blueviolet;
+}
+.theFirst{
+    float: left;
+}
+.head{
+    /*float: left;*/
+    width: 200px;
+}
+.foot{
+  /* float: right;*/
+
+}
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}

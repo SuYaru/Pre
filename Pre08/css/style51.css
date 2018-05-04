@@ -1,0 +1,36 @@
+.main{
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: yellow;
+    border: 2px solid blueviolet;
+}
+.theFirst{
+
+}
+
+.left{
+    float: left;
+    background-color: hotpink;
+    width: 300px;
+}
+.right{
+    margin-left: 10px;
+    background-color: navajowhite;
+
+}
+.center{
+    float: left;
+    background-color: #add8e6;
+    width: 300px;
+
+}
+
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}
