@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="style_3.css"/>
+</head>
+<body>
+    <div class="left">
+        <h1>简历</h1>
+    </div>
+    <ol class="total">
+        <li>
+            <div class="main">
+                <div class="subleft">
+                    <h2>基本信息</h2>
+                </div>
+                <div class="submain">
+                    <table>
+                        <tr>
+                            <td class="little">姓名</td>
+                            <td>张三</td>
+                            <td class="little">性别</td>
+                            <td>男</td>
+                            <td class="little">应聘职位</td>
+                            <td> Web 前端工程师</td></tr>
+                    </table>
+                    <input type="submit" value="点我看我的特殊爱好" class="special">
+
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main">
+                <div class="subleft">
+                    <h2>联系方式</h2>
+                </div>
+                <div class="submain">
+                    <table>
+                        <tr><td class="little">手机</td><td>12312341234</td><td class="little">Email</td><td><a href="#"> joinefe@baidu.com</a></td><td class="little">个人主页</td><td><a href="#">Github</a></td></tr>
+                    </table>
+                    <input type="submit" value="我是你的豆沙包！" class="doudou">
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main">
+                <div class="subleft">
+                    <h2>能力描述</h2>
+                </div>
+                <div class="submain">
+                    <table>
+                        <tr><td class="little">技术能力</td></tr>
+                        <tr><td>熟练掌握HTML,CSS,JavaScript</td></tr>
+                        <tr></tr>
+                        <tr><td class="little">综合能力</td></tr>
+                        <tr><td>良好的沟通能力，主动积极，努力勤奋</td></tr>
+                    </table>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="main">
+                <div class="subleft">
+                    <h2>教育经历</h2>
+                </div>
+                <div class="submain">
+                    <table>
+                        <tr><td class="little">本科</td></tr>
+                        <tr><td>百度前端技术学院小薇学院</td></tr>
+                        <tr></tr>
+                        <tr></tr >
+                        <tr><td class="little">研究生</td></tr>
+                        <tr><td>百度前端技术学院大饼学院</td></tr>
+                    </table>
+                </div>
+            </div>
+        </li>
+        <li class="lastborder">
+            <div class="main">
+                <div class="subleft">
+                    <h2>项目经历</h2>
+                </div>
+                <div class="submain">
+                    <table>
+                        <tr><td class="little">小度小度</td></tr>
+                        <tr><td>作为前端工程师角色参与了ABC组件的开发</td></tr>
+                        <tr></tr>
+                        <tr></tr>
+                        <tr><td class="little">SAN Doc</td></tr>
+                        <tr><td>作为文档工程师参与了SAN Doc编写</td></tr>
+                    </table>
+                </div>
+            </div>
+        </li>
+    </ol>
+    <script>
+        var use=document.querySelector(".special");
+        use.addEventListener('click',specialhobby);
+       
+        function specialhobby(){
+            /* if(use.parentElement.getElementsByTagName('table')){
+                console.log("%%%%");
+                console.log(use.parentElement.childNodes.length);
+            } */
+            
+            var hobby=document.createElement('p');
+            hobby.innerHTML='上天入地打豆豆！';
+            use.parentElement.appendChild(hobby);
+        }
+        
+        var dousha=document.querySelector(".doudou");
+        dousha.addEventListener('click',doushabao);
+       
+        function doushabao(){
+            /* if(use.parentElement.getElementsByTagName('table')){
+                console.log("%%%%");
+                console.log(use.parentElement.childNodes.length);
+            } */
+            
+            var bao=document.createElement('p');
+            bao.innerHTML='你是我的小可爱！';
+            dousha.parentElement.appendChild(bao);
+        }
+    </script>
+</body>
+</html>
