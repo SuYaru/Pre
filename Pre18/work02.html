@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+        var result=document.querySelector("#result");
+        function dec2bin(decNumber) {
+            // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+            if(decNumber<0&&decNumber%1!=0){                            // 整数除1 都能除尽
+                alert("请输入一个非负的整数！");return;
+            }
+             var stack=[];                                              // 利用栈的概念，将前面的余数存入栈底
+             var num=[];
+             i=0;                                                       // i 用于记录数值的长度
+             for(;decNumber>0;){
+                stack.push(decNumber%2);
+                decNumber=parseInt(decNumber/2);                        // 不断缩小输入的值
+                i++;
+             }
+             j=i-1;                                                     // 数组下标从0开始，往前移一位
+            for(;j>=0;j--){
+                num.push(stack[j]);                                     // 存入一个正序的数组
+            }
+            var little=document.createElement('p');
+            little.innerHTML=num.join().replace(/,/g,'');               // join() 将数组的元素连成字符串
+            result.appendChild(little);                                 // replace() 第一个参数 //i 为局部替换，只能换掉第一个逗号 //g 为全局替换，换掉所有的逗号
+        }
+        document.getElementById("trans-btn").onclick=function(){
+            var decNumber=parseFloat(document.getElementById("dec-number").value);
+            dec2bin(decNumber);
+        }
+        
+        
+// 实现当点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+// Some coding
+
+    </script>
+</body>
+</html>

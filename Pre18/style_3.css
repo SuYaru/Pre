@@ -1,0 +1,68 @@
+.left{
+    float: left;
+    background-color: #666666;
+    color: #fff;
+    text-align: left;
+    width: 100%;
+    padding-left:45px;
+    border:1px solid #666666;
+}
+
+ol li{
+
+    list-style: none;
+    border-top:2px solid #cccccc;
+
+}
+ol li.lastborder{
+
+    list-style: none;
+    border-top:2px solid #cccccc;
+    border-bottom:2px solid #cccccc;
+}
+ol{
+    float: left;
+    padding: 0;
+    margin: 0;
+    border-left:2px solid #ccc;
+    border-right:2px solid #ccc;
+    width: 100%;
+}
+ol li table .little{
+    font-weight:900 ;
+}
+.small{
+
+}
+table tr td{
+    font-weight: 500;
+}
+table tr{
+    margin: 5px;
+    height: 5px;
+}
+.main{
+    height: 202px;
+}
+.subleft{
+    width: 190px;
+    height: 200px;
+    background-color: #CCCCCC;
+    text-align: center;
+    line-height: 200px;
+    position: absolute;
+}
+.subleft h2{
+    margin:0;
+}
+.submain{
+    position: absolute;
+    padding-left: 210px;
+    padding-top: 20px;
+}
+.special{
+    width: 150px;
+    height: 50px;
+    font-weight: 600;
+    font-size: 10px;
+}

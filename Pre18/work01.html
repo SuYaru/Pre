@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="first-number" type="text" value="0" placeholder="第一个数字">
+    <input id="second-number" type="text" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <script type="text/javascript">
+        // 判断输入的类型是否都为数值型
+        var firstnumber=document.getElementById("first-number");
+        var secondnumber=document.getElementById("second-number");
+        var addbtn=document.querySelector('#add-btn');
+        var minusbtn=document.querySelector('#minus-btn');
+        var timesbtn=document.querySelector('#times-btn');
+        var dividebtn=document.querySelector('#divide-btn');
+        var result=document.querySelector('#result');
+        
+        
+        function addbtnFunction(){
+           if(isNaN(firstnumber.value)||isNaN(secondnumber.value)){     // 输入非字符类型时，isNaN 为true
+              alert("输入类型不正确！请输入数值类型的值！");return;
+           }
+           var total=document.createElement('p');
+           total.textContent=Number(firstnumber.value)+Number(secondnumber.value);
+           result.appendChild(total);
+       }
+       function minusbtnFunction(){
+           if(isNaN(firstnumber.value)||isNaN(secondnumber.value)){     // 输入非字符类型时，isNaN 为true
+              alert("输入类型不正确！请输入数值类型的值！");return;
+           }
+           var total=document.createElement('p');
+           total.textContent=firstnumber.value-secondnumber.value;
+           result.appendChild(total);
+       }
+       function timesbtnFunction(){
+           if(isNaN(firstnumber.value)||isNaN(secondnumber.value)){     // 输入非字符类型时，isNaN 为true
+              alert("输入类型不正确！请输入数值类型的值！");return;
+           }
+           var total=document.createElement('p');
+           total.textContent=firstnumber.value*secondnumber.value;
+           result.appendChild(total);
+       }
+       function dividebtnFunction(){
+           if(isNaN(firstnumber.value)||isNaN(secondnumber.value)){     // 输入非字符类型时，isNaN 为true
+              alert("输入类型不正确！请输入数值类型的值！");return;
+           }
+           if(secondnumber.value==0){
+              alert("后面输入的这个数作为除数，其值不能为0！");return;
+           }
+           var total=document.createElement('p');
+           total.textContent=firstnumber.value/secondnumber.value;
+           result.appendChild(total);
+       }
+      
+       addbtn.addEventListener('click',addbtnFunction);
+       minusbtn.addEventListener('click',minusbtnFunction);
+       timesbtn.addEventListener('click',timesbtnFunction);
+       dividebtn.addEventListener('click',dividebtnFunction);
+    </script>
+</body>
+</html>

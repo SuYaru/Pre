@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+        var result=document.querySelector("#result");
+        function dec2bin(decNumber,bitNumber) {
+            // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+            if(decNumber<0&&decNumber%1!=0){                            // 整数除1 都能除尽
+                alert("被转化数值：请输入一个非负的整数！");return;
+            }
+            if(bitNumber<0&&bitNumber%1!=0){                            // 整数除1 都能除尽
+                alert("数字宽度：请输入一个非负的整数！");return;
+            }
+             var stack=[];                                              // 利用栈的概念，将前面的余数存入栈底
+             var num=[];
+             i=0;                                                       // i 用于记录数值的长度
+             for(;decNumber>0;){
+                stack.push(decNumber%2);
+                decNumber=parseInt(decNumber/2);                        // 不断缩小输入的值
+                i++;
+             }
+             j=i-1;                                                     // 数组下标从0开始，往前移一位
+            for(;j>=0;j--){
+               
+                num.push(stack[j]);                                     // 存入一个正序的数组
+                if(bitNumber>num.length){
+                    console.log("小于规定长度");
+                }else if(bitNumber=num.length){
+                    console.log("刚好啦！请停止！");break;
+                }else{
+                    console.log("超过长度！");break;
+                }
+            }
+            if(bitNumber>num.length){
+                for(k=num.length;k<bitNumber;k++){
+                    num.unshift(0);                                     // 开头加入0 
+                }
+            }
+            var little=document.createElement('p');
+            little.innerHTML=num.join().replace(/,/g,'');               // join() 将数组的元素连成字符串
+            result.appendChild(little);                                 // replace() 第一个参数 //i 为局部替换，只能换掉第一个逗号 //g 为全局替换，换掉所有的逗号
+        }
+        document.getElementById("trans-btn").onclick=function(){
+            var decNumber=parseFloat(document.getElementById("dec-number").value);
+            var bitNumber=parseFloat(document.getElementById("bin-bit").value);
+            dec2bin(decNumber,bitNumber);
+        }
+
+// 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+// 新的需求是，转化显示后的二进制数为bin-bit中输入的数字宽度，例如
+// dec-number为5，bin-bit为5，则转化后数字为00101
+// 如果bin-bit小于转化后的二进制本身位数，则使用原本的位数，如dec-number为5，bin-bit为2，依然输出101，但同时在console中报个错
+// Some coding
+
+    </script>
+</body>
+</html>
