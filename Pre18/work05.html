@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+    <style>
+        body table tr td{
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>        
+    <p id="result">运算结果</p>
+    
+    <script>
+        // console 输出
+        /* var result=document.getElementById("result");
+        
+        for(i=1;i<=9;i++){
+            var local=document.getElementById('p');
+            
+            var local="";
+            for(j=1;j<=i;j++){
+                var temp01=""+i;
+                var temp02=""+j;
+                
+                local+=temp01+" * "+temp02+" = "+i*j+"    ";
+
+            }
+            console.log(local);
+        } */
+
+
+        //  table 实现输出
+        var kuang=document.createElement('table');
+        
+        for(i=1;i<=9;i++){
+        
+            var hang=document.createElement('tr');
+            var local="";
+            for(j=1;j<=i;j++){
+                var lie=document.createElement('td');
+                var temp01=""+i;
+                var temp02=""+j;
+                
+                lie.innerHTML=temp01+" * "+temp02+" = "+i*j;
+                hang.appendChild(lie);
+            }
+           
+            kuang.appendChild(hang);
+        }
+        
+        document.body.appendChild(kuang);
+/* 小练习，练习使用循环实现一个九九乘法表
+
+第一步，最低要求：在Console中按行输出 n * m = t
+然后，尝试在网页中，使用table来实现一个九九乘法表
+ */
+    </script>
+</body>
+</html>
