@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Window resize example</title>
+    
+  </head>
+  <body>
+
+    <div class="yourFather">
+        <h5>Original content</h5>
+        <div id="whether">
+            inside paragraph
+            <span>inside span</span>
+            inside paragraph
+            <strong>ARE you Ok ?</strong>
+            <section>testOnw</section>
+        </div>
+    </div>
+    <div>
+        <h5>Output</h5>
+        <div id="output"></div>
+    </div>
+
+    <script>
+        var baseElement = document.querySelector("#whether");
+        document.getElementById("output").innerHTML =
+         (baseElement.querySelector("span").innerHTML);     // 考虑p 元素之外的级别，P的父元素div 下的 span 元素
+        
+        
+    </script>
+  </body>
+</html>

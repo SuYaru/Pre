@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <div id="wrapper">
+        <div id="news-top" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>JS</span><a class="active" href="">Some Link2</a></li>
+                    <li><span>CSS</span><a href="">Some Link3</a></li>
+                    <li><span>JS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+        <div id="news-normal" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>HTML</span><a href="">Some Link2</a></li>
+                    <li><span>JS</span><a class="active" href="#">Some Link3</a></li>
+                    <li><span>CSS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>    
+        <button onclick="getAllListItem()">返回页面中所有li标签</button><br>
+        <button onclick="findAllHtmlSpanInOneSection()">返回包含span内容为html的LI标签</button><br>
+
+        <form action="" method="GET" onsubmit="findListItem()" id="nameform">
+            <input placeholder="请输入要搜索的值" id="search">
+        </form>
+        <button type="submit" form="nameform">返回所有span的内容为spanCont的标签</button><br>
+
+        
+        <button onclick="getActiveLinkContent()">class为active的链接中包含的文字内容</button>  
+    </div>
+    <script>
+    var wrapper=document.getElementById("wrapper");
+
+    function getAllListItem() {
+        // 返回页面中所有li标签
+        var theUl=document.getElementsByTagName('li').length;
+        alert(theUl);
+    }
+
+    function findAllHtmlSpanInOneSection(sectionId) {
+        // 返回某个section下所有span中内容为HTML的span标签
+        var length=document.getElementsByTagName('li').length;
+        for(i=0;i<length;i++){
+            var temp=document.getElementsByTagName('li')[i].childNodes[0];
+            if(temp.innerHTML=='HTML'){
+                alert('这是第'+(i+1)+"个span的值为HTML");
+            }
+        }
+    }
+
+    function findListItem(sectionId, spanCont) {
+        // 返回某个section下，所有所包含span内容为spanCont的LI标签
+        spanCont=document.getElementById('search');
+       
+        var length=document.getElementsByTagName('li').length;
+        for(i=0;i<length;i++){
+            var temp=document.getElementsByTagName('li')[i].childNodes[0];
+            if(temp.innerHTML==spanCont.value){
+                alert('第'+(i+1)+"个span的值为"+spanCont.value);
+            }
+        }
+    }
+
+    function getActiveLinkContent(sectionId) {
+        // 返回某个section下，class为active的链接中包含的文字内容 
+        var length=document.getElementsByTagName('li').length;
+        for(i=0;i<length;i++){
+            var temp=document.getElementsByTagName('li')[i].childNodes[1];
+            if(temp.getAttribute('class')=='active'){
+                alert('第'+(i+1)+"个链接的值为"+temp.innerHTML);
+            }
+        }
+    }
+
+    </script>
+</body>
+</html>

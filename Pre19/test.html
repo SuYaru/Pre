@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple DOM example</title>
+    <style>
+        .highlight {
+            color: white;
+            background-color: black;
+            padding: 10px;
+            width: 250px;
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+      <script>
+          var link=document.querySelector('a');
+          link.textContent='Mozilla Developer Network';
+          link.href='htpps://developer.mozilla.org';
+
+          var sect=document.querySelector('section');
+          var para=document.createElement('p');
+          para.textContent='we hope you enjoy the ride';
+          sect.appendChild(para);
+          para.setAttribute('class',highlight);
+          
+        // 为什么创建的P 会放在 原有的P 之前，而 创建的 textNode 会与原有的P 并列放置
+          var text=document.createTextNode('- the premier source for web development knowledge');
+
+          var linkpara=document.querySelector('p');
+          linkpara.appendChild(text);
+
+          var temp=document.createElement('p');
+          temp.textContent='we hope you enjoy the ride';
+          sect.appendChild(temp);
+
+          sect.appendChild(linkpara);
+          linkpara.parentNode.removeChild(linkpara);
+      </script>
+  </body>
+</html>
