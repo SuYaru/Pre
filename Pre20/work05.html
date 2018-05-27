@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>css sprite</title>
+        <style>
+            #one{
+                background-image: url("images/smile.jpg");
+                background-repeat: no-repeat;
+               
+                width:100%;
+                height:480px;
+                margin:0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="one"></div>
+    </body>
+    <script>
+       /*  var img=new Image();
+        img.src="images/smile.jpg";
+        var images=document.querySelector('img'); */   // 获取图片的高宽信息时，一直找不到办法，暂时直接设定
+        var length=7680;
+        var bgimg=document.getElementById('one');
+       
+        var varal=0;
+        var flag=true;  // 判断是往右转头还是往左转头
+        window.onload=function(){
+            circle();
+        }
+       function circle(){
+            if(varal-480>=-length&&flag==true||varal==0){
+                flag=true;
+                varal=varal-480;
+                bgimg.style.backgroundPositionY=varal+'px';
+                setTimeout(circle,100);
+                
+            }else{
+                flag=false;
+                varal=varal+480;
+                bgimg.style.backgroundPositionY=varal+'px';
+                setTimeout(circle,100);
+                
+            }
+        }
+    </script>
+</html>

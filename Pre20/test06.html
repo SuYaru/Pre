@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>控制div属性</title>
+<style>
+#outer{width:500px;margin:0 auto;padding:0;text-align:center;}
+#div1{width:100px;height:100px;background:black;margin:10px auto;display:block;}
+</style>
+<script>
+var changeStyle = function (elem, attr, value)
+{
+    elem.style[attr] = value    //attr 作为一个对象。 错误写法：elem.style.attr = value attr作为一个属性
+};
+window.onload = function ()
+{
+    var oBtn = document.getElementsByTagName("input");
+    var oDiv = document.getElementById("div1");
+    var oAtt = ["width","height","background","display","display"];
+    var oVal = ["200px","200px","red","none","block"];
+ 
+    for (var i = 0; i < oBtn.length; i++)
+    {
+        /* 函数在预解释阶段，都被当成字符串存入堆内存，                 ----> JS 闭包
+        在真正执行时，才会被拿出来执行，数组中存储的，其实只是指向这个堆内存的指针，i并没有传进去，执行的时候i才被传进去。 
+        但这时已经执行完了i，所获取到的i 都是最后一个
+        故在预解释的时候，先存储 Index */
+        oBtn[i].index = i;
+        oBtn[i].onclick = function ()       //这里绑定的回调函数是匿名函数，不会执行，但是当事件发生调用函数时，循环已经结束了，所以拿的是最后的值
+        {
+            // 当index 是最后一个“重置”时，cssText 清空                     ---》巧用运算符
+            this.index == oBtn.length - 1 && (oDiv.style.cssText = ""); // 为了判断是不是最后一个“重置”按钮
+            console.log(i);
+            changeStyle(oDiv, oAtt[this.index], oVal[this.index])
+        }  
+    }
+};
+</script>
+</head>
+<body>
+<div id="outer">
+<input type="button" value="变宽" />
+<input type="button" value="变高" />
+<input type="button" value="变色" />
+<input type="button" value="隐藏" />
+<input type="button" value="重置" />
+<div id="div1"></div>
+</div>　　
+</body>
+</html>

@@ -1,0 +1,41 @@
+<html> 
+    <head>
+        <script>
+            x = 0
+            y = 0
+            
+            function count1( )
+            {　x = x+ 1
+            　 document.display1.box1.value= x
+            　 meter1=setTimeout("count1()", 1000)      // meter1 就是timeoutID
+            }
+            
+            function count2( )
+            {　y = y+ 1
+            　 document.display2.box2.value= y
+            　 meter2=setTimeout("count2()", 1000)      // 若一个function被启动4次，则1秒会跳4下
+            } 
+        </script> 
+    </head>
+        
+    <body bgcolor=lightcyantext=red> <p> </br>
+        
+        <form name=display1>
+            <input type="text" name="box1"value="0" size=4 >
+            <input type=button value="停止计时" onClick="clearTimeout(meter1)" >
+            <input type=button value="继续计时" onClick="count1() " >
+        </form>
+        <p>
+        <form name=display2>
+            <input type="text" name="box2"value="0" size=4 >
+            <input type=button value="停止计时" onClick="clearTimeout(meter2) " >
+            <input type=button value="继续计时" onClick="count2( ) " >
+        </form>
+        
+    <script>
+        count1( )
+        count2( )
+    </script>
+        
+    </body> 
+</html>

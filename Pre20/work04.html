@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="http://www.softwhy.com/" />
+<title>蚂蚁部落</title>
+
+</head> 
+<body> 
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+    <script type="text/javascript"> 
+        var btn=document.querySelector('button');
+        var bc=document.getElementById('fade-obj');
+        var opacity=1;
+
+        btn.addEventListener('click',fadeFunction);
+        
+        // setTimeout实现 淡出效果
+        function fadeFunction(){
+            if(btn.innerHTML=="淡出"){
+                if(opacity-0.01>0){
+                    opacity=opacity-0.01;
+                    bc.style.opacity=opacity;
+                    setTimeout("fadeFunction()",100);
+                }else if(opacity-0.01<0){
+                // btn.disabled="false";
+                btn.removeAttribute('disabled');
+                btn.innerHTML="淡入";
+                }
+            }else{
+                if(opacity+0.01<1){
+                    opacity=opacity+0.01;
+                    bc.style.opacity=opacity;
+                    setTimeout("fadeFunction()",100);
+                }else if(opacity+0.01>1){
+                // btn.disabled="false";
+                btn.removeAttribute('disabled');
+                btn.innerHTML="淡出";
+                }
+            }
+            
+        }
+
+        // setInterval实现 淡出效果
+        /* function fadeFunction(){
+            if(opacity-0.1>0){
+                btn.disabled="true";
+                opacity=opacity-0.1;
+                bc.style.opacity=opacity;
+                setInterval("fadeFunction()",1000);
+            }else if(opacity<0){
+               // btn.disabled="false";
+               btn.removeAttribute('disabled');
+            }
+        } */
+    </script> 
+</body> 
+</html>

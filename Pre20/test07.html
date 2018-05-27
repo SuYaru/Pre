@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <script>
+            x = 0
+            function countSecond( )
+            {　
+                if(x<20){
+                    x = x+5;        // 设定变化量的间隔
+            　      document.fm.displayBox.value=x
+            　      setTimeout("countSecond()", 1000)
+                }
+               
+            }
+        </script> 
+    </head>
+    <body bgcolor=lightcyan text=red> <p> </br>
+    
+        <form name=fm>
+            <input type="text" name="displayBox"value="0" size=4 >
+        </form>
+    
+    <script>
+        countSecond( )
+    </script>
+    
+    </body> 
+</html>

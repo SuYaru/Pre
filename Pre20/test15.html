@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="http://www.softwhy.com/" />
+<title>蚂蚁部落</title>
+<script type="text/javascript"> 
+    var flag = null;
+    var count = 0;
+    var max = 20;
+    function show(temp) {
+        if (count >= temp) {
+            clearInterval(flag);
+            return;
+        }
+        document.getElementById("ant").innerHTML = count + 1;
+        count = count + 1;
+    }
+
+    window.onload = function () {
+        var bt = document.getElementById("bt");
+        
+        flag=setInterval("show()", 1000,max);  // show() 时 setInterval 出错
+        // flag=setInterval("var a=1;var b=2;c=a+b;alert(c);", 1000, max);  提示3
+        // 当 show() 函数在 function内部时，报错：show() 未定义
+        // 这是因为在setInterval 中，把"xx"作为一个全局函数，故会在 function以外的全局寻找变量
+        // 而外面没有这个变量，故报错未定义
+        // -----> 全局变量不能访问 局部变量
+        bt.onclick = function () {
+            clearInterval(flag);
+        }
+    } 
+</script> 
+</head> 
+<body> 
+<div id="ant">0</div>
+<input type="button" id="bt" value="停止定时器"/>
+</body> 
+</html>

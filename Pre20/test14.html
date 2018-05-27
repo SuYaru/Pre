@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="http://www.softwhy.com/" />
+<title>蚂蚁部落</title>
+<script type="text/javascript"> 
+    var flag = null;
+    var count = 0;
+    var max = 20;
+    
+    function show(max) {
+       //  alert(max); 这里定义的函数为 undefined
+        if (count >= max) {
+            clearInterval(flag);
+            return;
+        }
+        document.getElementById("ant").innerHTML = count + 1;
+        count = count + 1;
+    }
+    window.onload = function () {
+        var bt = document.getElementById("bt");
+       
+        flag=window.setInterval("show()", 1000, max);  // "show()"全局查找作用函数
+        
+        bt.onclick = function () {
+            clearInterval(flag);
+        }
+    } 
+</script> 
+</head> 
+<body> 
+    <div id="ant">0</div>
+    <input type="button" id="bt" value="停止定时器"/>
+</body> 
+</html>

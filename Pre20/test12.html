@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="http://www.softwhy.com/" />
+    <title>蚂蚁部落</title>
+    <script type="text/javascript"> 
+        window.onload = function () {
+            var count = 0;
+            var bt = document.getElementById("bt");
+            function show(){ 
+                document.getElementById("ant").innerHTML = count + 1;
+                count =count +1; 
+            } 
+        var flag = setInterval(show, 1000); // 间隔1秒执行一次 show( )
+            bt.onclick = function () {
+                clearInterval(flag);        // 取消间隔循环
+            }
+        } 
+    </script> 
+</head> 
+<body> 
+    <div id="ant">0</div>
+    <input type="button" id="bt" value="停止定时器"/>
+</body> 
+</html>

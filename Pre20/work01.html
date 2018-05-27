@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Random color example — event handler attribute</title>
+    <style>
+      button {
+        margin: 10px
+      };
+    </style>
+  </head>
+  <body>
+    <input id="name" type="text" >    
+    <button id="submit-btn">Submit</button>
+    <script>
+      var btn = document.querySelector('button');
+      
+      function bgChange() {
+        var con=document.querySelector('#name').value;
+        console.log(con);
+      }   
+     
+     // 在文本中按下输入框时，触发bgChange 函数
+      document.getElementById('name').setAttribute("onkeypress",'bgChange()');
+
+      // 输入过程中按下Esc 键
+      document.getElementById('name').onkeydown=function(event){
+          var e=event || window.event;
+          console.log(e.keyCode);
+          if(e.keyCode==27){                // keyCode==27 为Esc键 113 是 F2 键  13 是enter 键
+              e.target.value="";
+          }
+      }
+      btn.addEventListener('click', bgChange);
+
+    </script>
+  </body>
+</html>

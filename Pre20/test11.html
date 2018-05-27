@@ -1,0 +1,39 @@
+<html> 
+    <head>
+        <script>
+            x = 0
+            flag = 0
+            function count( )
+            {　
+               x = x+ 1
+            　 document.display.box.value= x
+            　 timeoutID=setTimeout("count()", 1000)
+            　 flag = 1
+            }
+            
+            function restart( )
+            {　if (flag==0)
+            　　　{　count( )　}
+            }
+        </script> 
+    </head>
+        
+    <body bgcolor=lightcyantext=red> <p> </br>
+        <form name=display>
+            <input type="text" name="box"value="0" size=4 >
+            <input type=button value="停止计时"
+            　　onClick="clearTimeout(timeoutID);flag=0" >
+            <input type=button value="继续计时" onClick="restart() " >
+        </form> 
+        <p>
+        
+        <script>
+            count( )
+        </script>
+        
+        <form>
+            <input type=button value="Show flag"
+            onClick="alert('The flag now is '+ flag)" >
+        </form>
+    </body> 
+</html>

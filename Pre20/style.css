@@ -1,0 +1,31 @@
+.one 
+{
+
+    background-image:url("images/ic.jpg");
+    background-repeat: no-repeat;
+    background-position:-309px -202px;
+    width:57px;
+    height:58px;
+    margin:0 auto;
+}
+
+.two 
+{
+
+    background-image:url("images/ic.jpg");
+    background-repeat: no-repeat;
+    background-position:-82px -399px;
+    width:57px;
+    height:58px;
+    margin-left:684px;
+}
+.three 
+{
+
+    background-image:url("images/ic.jpg");
+    background-repeat: no-repeat;
+    background-position:-233px -269px;
+    width:57px;
+    height:58px;
+    margin-left:684px;
+}
