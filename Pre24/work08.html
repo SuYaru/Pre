@@ -1,0 +1,47 @@
+<input id="stack-input" type="text">
+<p id="stack-cont">栈内容：apple&lt;-pear</p>    
+<button id="push-btn">进栈</button>
+<button id="pop-btn">退栈</button>
+<button id="font-btn">打印栈顶元素内容</button>
+<button id="empty-btn">判断栈是否为空</button>
+
+<script>
+
+var stack = ["apple", "pear"];
+var content=document.getElementById('stack-input');
+var cont=document.getElementById('stack-cont');
+var pushStack=document.getElementById('push-btn');
+var popStack=document.getElementById('pop-btn');
+var fontStack=document.getElementById('font-btn');
+var empty=document.getElementById('empty-btn');
+
+// 栈顶对应数组中第一个元素
+// 进栈
+pushStack.onclick=function(){
+    if(content.value){
+        stack.unshift(content.value);
+        cont.innerHTML="栈内容："+stack.join('&lt-');
+    }
+    
+}
+
+// 退栈
+popStack.onclick=function(){
+    stack.shift();
+    cont.innerHTML="栈内容："+stack.join('&lt-');
+}
+
+// 打印栈顶元素内容
+fontStack.onclick=function(){
+    cont.innerHTML="栈顶内容："+stack[0];
+}
+
+// 判断栈是否为空
+empty.onclick=function(){
+    if(stack.length==0){
+        cont.innerHTML="栈为空！";
+    }else{
+        cont.innerHTML="栈不为空！";
+    }
+}
+</script>

@@ -1,0 +1,48 @@
+<div class="output" style="min-height: 150px;">
+
+        <ul>
+        
+        </ul>
+        
+        <p></p>
+        
+</div>
+
+
+<textarea id="code" class="playable-code" style="height: 370px;">
+
+
+</textarea>
+<div class="playable-buttons">
+        <input id="reset" type="button" value="Reset">
+        <input id="solution" type="button" value="Show solution">
+      </div>
+<script>
+    var list = document.querySelector('.output ul');
+    var totalBox = document.querySelector('.output p');
+    var total = 0;
+    list.innerHTML = '';
+    totalBox.textContent = '';
+    // number 1
+    var products=[['Underpants','6.99'],['Socks','5.99'],
+                    ['T-shirt','14.99'],['Trousers','31.99'],
+                    ['Shoes','23.99']];
+    for (var i = 0; i <products.length; i++) { // number 2
+    
+    // number 3
+        var name;
+        var price;
+        name=products[i][0];
+        price=Number(products[i][1]);
+
+    // number 4
+        total+=Number(products[i][1]);
+    // number 5
+    itemText = 0;
+    itemText=name+"-$"+price;
+    var listItem = document.createElement('li');
+    listItem.textContent = itemText;
+    list.appendChild(listItem);
+    }
+    totalBox.textContent = 'Total: $' + total.toFixed(2);  //toFixed()四舍五入为2位小数
+</script>

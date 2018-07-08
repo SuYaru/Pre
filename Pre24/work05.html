@@ -1,0 +1,46 @@
+<input id="queue-input" type="text">
+<p id="queue-cont">队列内容：apple-&gt;pear</p>    
+<button id="in-btn">入队</button>
+<button id="out-btn">出队</button>
+<button id="font-btn">打印队头元素内容</button>
+<button id="empty-btn">判断队列是否为空</button>
+
+<script>
+
+var queue = ["apple", "pear"];
+var content=document.getElementById('queue-input');
+var cont=document.getElementById('queue-cont');
+var inSequence=document.getElementById('in-btn');
+var outSequence=document.getElementById('out-btn');
+var font=document.getElementById('font-btn');
+var empty=document.getElementById('empty-btn');
+
+// 队头对应数组中最后一个元素
+// 入队
+inSequence.onclick=function(){
+    if(content.value){
+        queue.push(content.value);
+    cont.innerHTML="队列内容："+queue.join("-&gt;");
+    }
+};
+
+// 出队
+outSequence.onclick=function(){
+    queue.shift();
+    cont.innerHTML="队列内容："+queue.join("-&gt;");
+}
+
+// 打印队头元素内容
+font.onclick=function(){
+    cont.innerHTML="队列内容："+queue[queue.length-1];
+}
+
+// 判断队列是否为空
+empty.onclick=function(){
+    if(queue.length!=0){
+        cont.innerHTML="队列不空！";
+    }else{
+        cont.innerHTML="队列为空！";
+    }
+}
+</script>

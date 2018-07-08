@@ -1,0 +1,126 @@
+
+<script>
+    /*
+    实现一个字符串头尾去除空格的函数
+    注意需要去除的空格，包括全角、半角空格
+    暂时不需要学习和使用正则表达式的方式
+    */
+    function diyTrim(str) {
+        var result = "";
+
+        // do something
+        var start=0;
+        var end=str.length-1;
+        for(var j=0;j<str.length;j++){
+            if(str.charCodeAt(j)==32||str.charCodeAt(j)==12288){
+                start=j+1;
+            }else{
+                break;
+            }
+        }
+        for(var k=str.length-1;k>0;k--){
+            if(str.charCodeAt(k)==32||str.charCodeAt(k)==12288){
+                end=k-start;
+            }else{
+                break;
+            }
+        }
+        result=str.substr(start,end);
+        return result
+    }
+
+    // 测试用例
+    console.log(diyTrim(' a f b    ')); // ->a f b
+    console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+    console.log(diyTrim('1    ')); // ->1
+    console.log(diyTrim('　　f')); // ->f
+    console.log(diyTrim('  　  a f b 　　 ')); // ->a f b
+    console.log(diyTrim(' ')); // ->
+    console.log(diyTrim('　')); // ->
+    console.log(diyTrim('')); // ->
+
+    /*
+    去掉字符串str中，连续重复的地方
+    */
+    function removeRepetition(str) {
+        var result = "";
+
+        // do something
+        /* alert(str.length);
+        var Str=str;
+        var temp=Str.length;
+        var count=0;
+        for(var j=0;j<temp;j++){
+            alert(Str+temp+"___"+j);
+            while(Str[j]==Str[j+1]){
+                alert(Str[j]+"_____"+Str[j+1]);
+                for(var i=j;i<temp-1;i++){
+                    Str[i].replace(Str[i],Str[i+1]);
+                    
+                    console.log(i+"___*____"+Str[i]+"____&____"+Str[i+1]);
+                }
+                
+                count++;
+                alert(count+"   "+Str);
+                j++
+            }
+           alert(Str[temp-1]); 
+        }
+        result=Str.substr(0,temp-count); */
+        /* var s1 = str.split("").sort().join("");
+        if(s1!=""||s1!=null){
+            var cc = s1.match(/(.)\1+/g);    //11,22,33,aa,ccc 当然这里用()\1*也会可以(因为下面是替换):11,22,33,4,aa,b,ccc
+        /* for(var i = 0;i<cc.length;i++){
+            c = cc[i].substring(0,1);
+            s1 = s1.replace(cc[i],c);
+        }
+        alert(s1);    //1234abc 
+        alert(cc);
+        } */
+        /* var o=str;
+        var array = new Array();
+        var k =0;
+        for(var i=0;i<o.length;i++){
+            if(array == "" || array.toString().match(new RegExp(o.charAt(i),"g")) == null){
+                array[k] =o.charAt(i);
+                array.sort();
+                k++;
+            }
+        } */
+        var Str=str;
+        var temp=Str.length;
+        var count=0;
+        for(var j=0;j<temp;){
+            if(Str[j]!=Str[j+1]){
+                result+=Str[j];
+                j++;
+            }else{
+                if(j==temp-1){
+                    result+=Str[j];
+                    j++;
+                }
+                while(Str[j]==Str[j+1]&&j!=temp-1){
+                    if(j==temp-1){
+                        result+=Str[j];
+                    }
+                    j++;
+                }
+                if(j==temp-1){
+                    result+=Str[j];
+                    j++;
+                }
+            }
+            
+        }
+        alert(result);
+        return result;
+    }
+
+    // 测试用例
+    console.log(removeRepetition("aaa")); // ->a
+    console.log(removeRepetition("abbba")); // ->aba
+    console.log(removeRepetition("aabbaabb")); // ->abab
+    console.log(removeRepetition("")); // ->
+    console.log(removeRepetition("abc")); // ->abc
+
+</script>
