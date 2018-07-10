@@ -93,14 +93,7 @@
     }
     // 获取选中的值
     divv.onchange=function(){
-        console.log("()()_____");
         specialDay();
-        var options=y.getElementsByTagName('option');
-        for(var j=0;j<options.length;j++){
-            if(options[j].selected){
-                console.log(y.children[j].value);
-            }
-        }
         cunrrentTime(); 
     }
     
@@ -110,7 +103,6 @@
         composeChild(2,13,m);             // 补全月份
         // 天数根据选的月份和是否闰年不同
         composeChild(0,32,d);       // 补全天数
-        /* specialDay(); */
         composeChild(01,24,h);             // 补全小时
         composeChild(1,60,mm);             // 补全分钟
         composeChild(1,60,ss);             // 补全秒
@@ -139,9 +131,7 @@
         theHour=getSelect(h);
         theMinutes=getSelect(mm);
         theSecond=getSelect(ss);
-        /* chooseday.setFullYear(theYear,theMonth,theDay); */
         chooseday=settingTime(theYear,theMonth,theDay,theHour,theMinutes,theSecond);
-       /*  console.log(chooseday.getTime()); */
        var judgingArr=judgingDate(chooseday);
         result.innerHTML="现在距离"+theYear+"年"+theMonth+"月"+theDay+"日"+getWeek(chooseday.getDay())+" "+theHour+":"+theMinutes+":"+theSecond+
                         judgingArr[0]+judgingArr[1]+"天"+judgingArr[2]+"小时"+judgingArr[3]+"分"+judgingArr[4]+"秒";
@@ -152,7 +142,6 @@
         var options=y.getElementsByTagName('option');
         for(var j=0;j<options.length;j++){
             if(options[j].selected){
-                /* console.log(y.children[j].value); */
                 return y.children[j].value;
             }
         } 
@@ -188,7 +177,6 @@
     // 1.6 天数根据选的月份和是否闰年不同
     function specialDay(){
         // 这里我再加个条件 d.firstChild!=null 则不会报错
-        
         while(d.hasChildNodes&&d.firstChild!=null){
             d.removeChild(d.firstChild);
         }
