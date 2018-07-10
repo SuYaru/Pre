@@ -1,0 +1,55 @@
+<html>
+<head>
+<script type="text/javascript">
+    function startTime()
+    {
+        var today=new Date()
+        var y=today.getFullYear();
+        var month=today.getMonth()+1;
+        var d=today.getDate();
+        var h=today.getHours()
+        var m=today.getMinutes()
+        var s=today.getSeconds()
+        
+        // add a zero in front of numbers<10
+        m=checkTime(m)
+        s=checkTime(s)
+        h=checkTime(h)
+        packageLast(y,month,d,today,h,m,s);
+        
+        t=setTimeout('startTime()',500)
+    }
+    function packageLast(y,month,d,today,h,m,s){
+        var judge;
+        if(Number(h)<=12){
+            judge="AM";
+        }else{
+            judge="PM";
+        }
+        document.getElementById('txt').innerHTML=y+"-"+month+"-"+d+" "+getWeek(today.getDay())+" "+h+" : "+m+" : "+s+" "+judge;
+        document.getElementById('txt').innerHTML+="<br>"+y+"年"+month+"月"+d+"日"+getWeek(today.getDay())+h+":"+m+":"+s;
+    }
+    function getWeek(day){
+        var weekday=new Array(7)
+            weekday[0]="Sunday";
+            weekday[1]="Monday";
+            weekday[2]="Tuesday";
+            weekday[3]="Wednesday";
+            weekday[4]="Thursday";
+            weekday[5]="Friday";
+            weekday[6]="Saturday";
+        return weekday[day];
+    }
+    function checkTime(i)
+    {
+    if (i<10) 
+    {i="0" + i}
+    return i
+    }
+</script>
+</head>
+
+<body onload="startTime()">
+<div id="txt"></div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+
+
+<p id="current">当前位置:</p>  
+<input type="text" placeholder="请输入移动步数" id="steps"><br><br>
+
+<button id="firstMission">向前走两步，向左转,再向前走一步</button>  
+<button id="secondMission">向前2步，三次左转，向前一步</button>
+<button id="MultiMission">复杂转向</button>
+<button id="move">移动</button>
+<script>
+
+var content=document.getElementById('current');
+var firstMission=document.getElementById('firstMission');
+var secondMission=document.getElementById('secondMission');
+var MultiMission=document.getElementById('MultiMission');
+var steps=document.getElementById('steps');
+var move=document.getElementById('move');
+var thetop=0;
+var left=false;
+
+
+
+// 向前走两步，向左转
+firstMission.onclick=function(){
+    thetop=0;
+    left=false;
+
+    go();
+    go();
+    turnLeft();
+    go();
+    if(left){
+        
+        content.innerHTML="当前位置："+"向前走："+thetop+"步,向左转";
+    }else{
+       
+        content.innerHTML="当前位置："+"向前走："+thetop+"步,向右转";
+    }
+}
+// 向前走两步，向左转
+secondMission.onclick=function(){
+    thetop=0;
+    left=false;
+
+    go();
+    go();
+    turnLeft();
+    turnLeft();
+    turnLeft();
+    go();
+    if(left){
+        
+        content.innerHTML="当前位置："+"向前走："+thetop+"步,向左转";
+    }else{
+       
+        content.innerHTML="当前位置："+"向前走："+thetop+"步,向右转";
+    }
+}
+// 复杂转向
+MultiMission.onclick=function(){
+    thetop=0;
+    left=false;
+
+    go();
+    TurnRight();
+    go();
+    go();
+    TurnRight();
+    go();
+    TurnRight();
+    go();
+    go();
+    go();
+    TurnRight();
+    if(left){
+        
+        content.innerHTML="当前位置："+"向前走："+thetop+"步,向左转";
+    }else{
+       
+        content.innerHTML="当前位置："+"向前走："+thetop+"步,向右转";
+    }
+}
+
+// 综合移动
+move.onclick=function(){
+    thetop=0;
+    left=false;
+
+    console.log(!isNaN(steps.value));
+    if(!isNaN(steps.value)&&steps.value==""&&steps.value==null){              // 为数字
+        if(steps.value>0){
+            GoSteps(Number(Math.floor(steps.value)));
+            content.innerHTML="当前位置："+"向前走："+thetop;
+        }else{                                  // 输入的值为负数
+            GoSteps(0);
+            content.innerHTML="当前位置："+"向前走："+thetop;
+        }
+        
+    }else if("true"==steps.value||steps.value==""||steps.value==null){              // 输入true
+        GoSteps(1);
+        content.innerHTML="当前位置："+"向前走："+thetop;
+    }else{
+        GoSteps(0);
+        content.innerHTML="当前位置："+"向前走："+thetop;
+    }
+    
+}
+// 向上走
+function go(){
+    thetop++;
+}
+
+// 多次向前走
+function GoSteps(n){
+    for(var i=0;i<n;i++){
+        go();
+    }
+}
+// 向左转
+function turnLeft(){
+    if(left){
+        left=false;
+        /* content.innerHTML="当前位置："+"向前走："+thetop+"步,向右转"; */
+    }else{
+        left=true;
+       /*  content.innerHTML="当前位置："+"向前走："+thetop+"步,向左转"; */
+    }
+    
+}
+// 三次左转==向右转
+function TurnRight() {
+    turnLeft();
+    turnLeft();
+    turnLeft();    
+}
+</script>
