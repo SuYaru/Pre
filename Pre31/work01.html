@@ -1,0 +1,203 @@
+<html>
+    <head>
+        <script type="text/javascript" src="jquery/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="work01.css"/>
+    </head>
+    <body>
+        <div class="wrapper">
+            <input id="email-input" type="text" >
+            <ul id="email-sug-wrapper" class="email-sug"></ul>
+        </div>
+    </body>
+    <script type="text/javascript">
+        var emailInput=document.getElementById('email-input');
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        var theUl=document.getElementById('email-sug-wrapper');
+        var chooseIndex=0;
+        
+        // 页面加载时键盘获得焦点
+        window.onload=function(){
+            emailInput.focus();
+        }
+        // 键盘输入
+
+        emailInput.onkeyup=function(event){
+          //新增  如果按键不是上下及回车重置选中状态()  enter 13 上38 下40 esc 27
+            if((event.keyCode==13||event.keyCode==38||event.keyCode==40)&&emailInput.value!=""){
+                listenKeyWords();
+            }else if(event.keyCode==27){
+                emailInput.select();                // esc 内容全选
+            }else{
+                theUl.innerHTML="";                  // 增加一步，清空之前的所有内容
+                var content=getInput();              // 获取用户输入
+                var contentList=genarate(content);   // 生成提示框中的提示内容
+                addContent(contentList);            //  将提示内容添加到email-sug-wrapper中 
+                resetState();
+                if(content==""){
+                        isHide();
+                }else{
+                    isShow();
+                } 
+            }
+             
+        }
+        // 重置选中状态
+        function resetState(){  
+            var index=Number(findChoosed());
+            if(index!=0){       // 当前选中状态Li不是第一个
+                theUl.children[index].className="";
+                setActive(theUl.children[0]);                       // 设置第一个Li为选中状态
+            }
+        }
+        // 找到选中状态的 li的下标
+        function findChoosed(){
+            var k=0;
+            for(var k in theUl.children){
+                if(theUl.children[k].className=="active"){       // 当前选中状态Li不是第一个
+                   return k;
+                }
+            }
+            if(k==0){
+                return k;
+            }
+        }
+
+        
+
+        // 生成提示框中的提示内容
+        function genarate(content){
+            // 对于特殊字符进行转义编码
+            content=transimite(content);
+            var before="";
+            var later;
+            if(content.indexOf("@")!=-1){          // 存在@
+                before=content.substr(0,content.indexOf("@"));
+                later=content.substr(content.indexOf("@")+1,content.length-1);
+            }
+            if(later==undefined){
+                before=content;
+            }
+            var theList=[];
+            var count=0;
+            for(var i in postfixList){
+                if(postfixList[i].indexOf(later)==0){
+                    var p=document.createElement('p');
+                    p.innerHTML=before+"@"+postfixList[i];  
+                    
+                    theList.unshift(p.innerHTML);
+                }else{
+                    count++;
+                }
+            }
+            if(count==postfixList.length){
+                for(var j in postfixList){
+                    var p=document.createElement('p');
+                    p.innerHTML=before+"@"+postfixList[j];  
+                    theList.unshift(p.innerHTML);
+                }
+            }
+            return theList;
+        }
+
+        //  将提示内容添加到email-sug-wrapper中
+        function addContent(contentList){
+            for(var j in contentList){
+                var li=document.createElement('li');
+                li.innerHTML=contentList[j];
+                li.setAttribute('class'," ");
+                theUl.appendChild(li);
+            }
+            setActive(theUl.firstChild);
+        }
+
+        // 隐藏提示框
+        function isHide(){
+            theUl.style.visibility="hidden";
+        }
+
+        // 显示提示框
+        function isShow(){
+            theUl.style.visibility="visible";
+        }
+
+        // 监听鼠标点击
+        theUl.onclick=function(e){
+            e=e||window.event;
+            e.target=e.target||e.srcElement;
+            if(e.target.nodeName.toLowerCase()=='li'){  // 被点击的是不是提示框中的Li节点
+                var choosing=e.target.innerHTML;        // 获取被点击Li对应的提示内容
+                emailInput.value=choosing;              // 将内容放到input输入框中  
+                isHide();                               // 隐藏输入框
+                emailInput.focus();
+            }
+        }
+
+        // 对于特殊字符进行转义编码
+        function transimite(origin){
+            var grex="";
+            switch(origin){
+                case '&':grex=origin.replace(/&/g,"&amp;");break;
+                case '<':grex=origin.replace(/</g,"&lt;");break;
+                case '>':grex=origin.replace(/>/g,"&rt;");break;
+                case '<br>':grex=origin.replace(/<br>/g,"");break;
+                case '\'':grex=origin.replace(/\'/g,"&#39;");break;
+                case '\"':grex=origin.replace(/\"/g,"&quot;");break;
+            }
+            if(grex==""){
+                return origin;
+            }else{
+                return grex;
+            }
+            
+        }
+
+        // 默认第一个为选中状态
+        function setActive(chooseNode){
+            // 传入一个当前节点，先删除父节点下所有子节点的class=="active"
+            var parent=chooseNode.parentNode;
+            var children=parent.children;
+            for(var i in children){
+                if(children[i].className=="active"){
+                    removeClass(children[i]);
+                }
+            }
+            chooseNode.className="active";
+        }
+
+        // 移除所有li 的class属性
+        function removeClass(removeNode){
+            removeNode.className="";
+        }
+
+        // 监听特殊3个键的键盘事件  enter 13 上38 下40
+        function listenKeyWords(){             
+            var index=Number(findChoosed());                // 找到当前为选中状态的Li  清除掉它的选中状态
+            theUl.children[index].className="";
+
+            if(event.keyCode==38){                  // 上键
+                if(index!=0){
+                    setActive(theUl.children[index-1]);
+                }else{
+                    setActive(theUl.lastChild);
+                }
+            }
+            if(event.keyCode==40){                  // 下键
+                if(index!=theUl.children.length-1){
+                    setActive(theUl.children[index+1]);
+                }else{
+                    setActive(theUl.firstChild);
+                }
+            }
+            if(event.keyCode==13){                  // 回车
+                emailInput.value=theUl.children[index].innerHTML;
+                emailInput.focus();
+                isHide();
+            }
+        }
+        // 获取用户输入
+        function getInput(){
+            var temp=emailInput.value.trim();
+            return temp;
+        }
+    </script>
+</html>

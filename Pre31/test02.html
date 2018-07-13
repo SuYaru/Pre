@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Demo</title>
+<style>
+    /* body{
+        font-family:"宋体";color="blue";font-size="9pt"
+    }; */
+</style>
+<script language="JavaScript">
+//.innerHTML
+function innerHTMLDemo()
+{
+test_id1.innerHTML="<i><u>设置或获取位于对象起始和结束标签内的HTML.</u></i>";
+}
+//.innerText
+function innerTextDemo()
+{
+test_id2.innerText="<i><u>设置或获取位于对象起始和结束标签内的文本.</u></i>";
+}
+//.outerHTML
+function outerHTMLDemo()
+{
+test_id3.outerHTML="<i><u>设置或获取对象及其内容的 HTML 形式.</u></i>";
+}
+//.outerText
+function outerTextDemo()
+{
+test_id4.outerText="<i><u>设置(包括标签)或获取(不包括标签)对象的文本.</u></i>";
+}
+</script>
+</head>
+<body>
+<ul>
+<li id="test_id1" onclick="innerHTMLDemo()">innerHTML效果.</li>
+<li id="test_id2" onclick="innerTextDemo()">innerText效果.</li>
+<li id="test_id3" onclick="outerHTMLDemo()">outerHTML效果.</li>
+<li id="test_id4" onclick="outerTextDemo()">outerText效果.</li>
+</ul>
+</body>
+</html>

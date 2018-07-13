@@ -1,0 +1,25 @@
+.wrapper{
+    width: 200px;
+}
+.wrapper input{
+    width: inherit;
+}
+ul{
+    padding: 0;
+    margin: 0;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    visibility: hidden;
+}
+ul li{
+    list-style: none;
+    
+}
+
+ul li:hover{
+    background-color: forestgreen;
+}
+ul li.active{
+    background-color: crimson;
+}
