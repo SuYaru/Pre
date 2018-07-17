@@ -1,0 +1,339 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="work01.css"/>
+        
+        
+    </head>
+    <body>
+        <p>地区选择：</p>
+        <div id="region-radio-wrapper">
+        </div>
+        <p>商品种类：</p>
+        <div id="product-radio-wrapper">
+        </div>
+        <div id="table-wrapper">
+        </div>
+    </body>
+    
+    <script type="text/javascript" src="js/checkbox.js"></script>
+    <script type="text/javascript" src="js/table.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+   <!-- <script type="text/javascript"> 
+        var tableWrapper=document.getElementById('table-wrapper');
+        var regionRatio=document.getElementById('region-radio-wrapper');
+        var productRatio=document.getElementById('product-radio-wrapper');
+        var judging=0;              // “商品作为第一列，地区作为第二列”默认标识
+        var mappingData=[];
+        var selectRegion=[];                    // 地区类
+        var selectKind=[];                      // 商品类
+        /* var regionall=document.getElementsByClassName('regionall'); */
+         
+        var sourceData = [{                                         // 数据源数组
+            product: "手机",
+            region: "华东",
+            sale: [120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270]
+        }, {
+            product: "手机",
+            region: "华北",
+            sale: [80, 70, 90, 110, 130, 145, 150, 160, 170, 185, 190, 200]
+        }, {
+            product: "手机",
+            region: "华南",
+            sale: [220, 200, 240, 250, 260, 270, 280, 295, 310, 335, 355, 380]
+        }, {
+            product: "笔记本",
+            region: "华东",
+            sale: [50, 60, 80, 110, 30, 20, 70, 30, 420, 30, 20, 20]
+        }, {
+            product: "笔记本",
+            region: "华北",
+            sale: [30, 35, 50, 70, 20, 15, 30, 50, 710, 130, 20, 20]
+        }, {
+            product: "笔记本",
+            region: "华南",
+            sale: [80, 120, 130, 140, 70, 75, 120, 90, 550, 120, 110, 100]
+        }, {
+            product: "智能音箱",
+            region: "华东",
+            sale: [10, 30, 4, 5, 6, 5, 4, 5, 6, 5, 5, 25]
+        }, {
+            product: "智能音箱",
+            region: "华北",
+            sale: [15, 50, 15, 15, 12, 11, 11, 12, 12, 14, 12, 40]
+        }, {
+            product: "智能音箱",
+            region: "华南",
+            sale: [10, 40, 10, 6, 5, 6, 8, 6, 6, 6, 7, 26]
+        }]
+        
+        // 地区下拉参数
+        var regionData=[{
+            value:1,
+            text:"华东"
+        },{
+            value:2,
+            text:"华南"
+        },{
+            value:3,
+            text:"华北"
+        }]
+
+        // 商品下拉参数
+        var productData=[{
+            value:1,
+            text:"手机"
+        },{
+            value:2,
+            text:"笔记本"
+        },{
+            value:3,
+            text:"智能音箱"
+        }]
+
+        // 页面加载时，自动生成 checkbox
+        window.onload=function(){
+            generateCheckBoxs(regionRatio,regionData);
+            generateCheckBoxs(productRatio,productData);
+            
+        }
+        // 生成一组CheckBox
+        function generateCheckBoxs(ratioBox,data){
+              ratioBox=genCheckBox(ratioBox,data);
+              var childrens=ratioBox.children;
+              var length=childrens.length-1;
+              childrens[0].onclick=function(){
+                    setAllTrue(childrens);
+                    getNewForm(getSelected());
+              }
+              for(var k=1;k<=length;k++){
+                  childrens[k].onclick=function(){
+                      var count=0;
+                      for(var p=1;p<=length;p++){
+                          if(childrens[p].checked){
+                              count++;
+                          }
+                      }
+                      if(count==length){
+                            setAllTrue(childrens);
+                      }else if(count>0){
+                          setFalse(childrens);
+                      }else{
+                         this.checked=true;
+                      }
+                      getNewForm(getSelected());
+                  }
+              }
+        }
+        // 生成CheckBox appendChild 
+        function genCheckBox(RatioBox,data){
+            var all=document.createElement('input');
+            all.setAttribute('type','checkbox');
+            all.setAttribute('value','1');
+            RatioBox.appendChild(all);
+            var temp=document.createTextNode("全选");
+            RatioBox.appendChild(temp);
+
+            for(var d=0; d<data.length;d++){
+                var choosing=document.createElement('input');
+                choosing.setAttribute('type','checkbox');
+                choosing.setAttribute('value',data[d].text);
+                /* choosing.setAttribute('oninput',"childrenFunc()"); */
+                var p=document.createTextNode(data[d].text);
+                RatioBox.appendChild(choosing);
+                RatioBox.appendChild(p);
+            }
+            return RatioBox;
+        }
+    
+        // 点击全选时，如果单个选项中只要有一个不是被选上的状态，则进行全选操作
+        function setAllTrue(childrens){
+            for(var p in childrens){
+                childrens[p].checked=true;
+            }
+            return childrens;
+        }
+    
+        // 其中一个取消勾选时，全选按钮取消勾选
+        function setFalse(childrens){
+             childrens[0].checked=false;
+        }
+
+        // 根据checkbox选项获取数据
+        function getSelected(){
+            mappingData=[];
+            selectRegion=[];                    // 地区类
+            selectKind=[];                      // 商品类
+
+           /* region  获取地区类所选属性*/
+          
+           for(var k=1;k<=regionRatio.children.length-1;k++){
+               if(regionRatio.children[k].checked){
+                   selectRegion.unshift(regionRatio.children[k].value);
+               }
+           }
+
+           /* 获取商品种类选项的值 */
+           for(var k=1;k<=productRatio.children.length-1;k++){
+               if(productRatio.children[k].checked){
+                   selectKind.unshift(productRatio.children[k].value);
+               }
+           }
+           // 地区多选，商品没有时
+           if(selectRegion.length>=1&&selectKind.length==0){
+               judging=0;
+                for(var i in sourceData){
+                    for(var p in selectRegion){
+                        if(sourceData[i].region==selectRegion[p]){
+                            mappingData.unshift(sourceData[i]);
+                        }
+                        
+                    }
+                }
+           }
+           // 商品多选，地区没有时
+           if(selectKind.length>=1&&selectRegion.length==0){
+               judging=0;
+                for(var i in sourceData){
+                    for(var p in selectKind){
+                        if(sourceData[i].product==selectKind[p]){
+                            mappingData.unshift(sourceData[i]);
+                        }
+                    }
+                }
+           }
+           // 地区和商品都只有一个 
+           if(selectRegion.length==1&&selectKind.length==1){
+               judging=0;
+                for(var i in sourceData){
+                    if(sourceData[i].region==selectRegion[0]&&sourceData[i].product==selectKind[0]){
+                        mappingData.unshift(sourceData[i]);
+                    }
+                }
+           }
+           // 商品选择了一个，地区选择了多个的时候 :商品在前，地区在后
+           if(selectRegion.length>1&&selectKind.length==1){
+               judging=1;
+                for(var i in sourceData){
+                    for(var p in selectRegion){
+                        if(sourceData[i].region==selectRegion[p]&&sourceData[i].product==selectKind[0]){
+                            mappingData.unshift(sourceData[i]);
+                        }
+                        
+                    }
+                }
+           }
+           // 当地区选择了一个，商品选择了多个的时候 ： 商品在后，地区在前
+           if(selectRegion.length==1&&selectKind.length>1){
+               judging=2;
+                for(var i in sourceData){
+                    for(var p in selectKind){
+                        if(sourceData[i].region==selectRegion[0]&&sourceData[i].product==selectKind[p]){
+                            mappingData.unshift(sourceData[i]);
+                        }
+                        
+                    }
+                }
+           }
+           // 商品和地区都选择了多于一个的情况下:商品作为第一列，地区作为第二列
+           if(selectRegion.length>1&&selectKind.length>1){
+               judging=1;
+                for(var i in sourceData){
+                    for(var p in selectRegion){
+                        for(var k in selectKind){
+                            if(sourceData[i].region==selectRegion[p]&&sourceData[i].product==selectKind[k]){
+                                mappingData.unshift(sourceData[i]);
+                            }
+                        }
+                    }
+                }
+           }
+            return mappingData;
+        }
+
+        // 渲染新的表格
+        function getNewForm(mappingData){
+            // 若原来有table，则先删除
+            while(tableWrapper.hasChildNodes()){
+                tableWrapper.removeChild(tableWrapper.firstChild);
+            }
+            var table=document.createElement('table');
+            var thead=document.createElement('thead');
+            thead.appendChild(generateHead());
+            table.appendChild(thead);                       // 遍历表头并存储
+            
+            var tbody=document.createElement('tbody');
+            tbody.setAttribute('class','thebody');
+            table.appendChild(tbody);                       // 创建表格体
+
+            // 遍历数据
+            for(var k in mappingData){
+               var bodyTr=document.createElement('tr');
+               if(k%selectRegion.length==0&&judging==1){
+                    var product=document.createElement('td');
+                    product.innerHTML=mappingData[k].product;
+                    product.setAttribute('rowspan',selectRegion.length);
+                    bodyTr.appendChild(product);
+               }else if(k==0&&judging==2){
+                    var region=document.createElement('td');
+                    region.innerHTML=mappingData[k].region;
+                    region.setAttribute('rowspan',mappingData.length);
+                    bodyTr.appendChild(region);
+               }
+               bodyTr=loopAppend(bodyTr,mappingData[k]);
+               tbody.appendChild(bodyTr);
+                
+                
+            }
+            tableWrapper.appendChild(table);
+        }
+
+        // 遍历生成新的表头
+        function generateHead(){
+            var theTr=document.createElement('tr');
+            theTr.setAttribute('class','list');
+            var productName=document.createElement('td');
+            productName.innerHTML="商品";
+            var addr=document.createElement('td');
+            addr.innerHTML="地区";
+            if(judging==0||judging==1){
+                theTr.appendChild(productName);
+                theTr.appendChild(addr);
+            }else{
+                theTr.appendChild(addr);
+                theTr.appendChild(productName);
+            }
+           
+            for(var j=1;j<=12;j++){
+                var month=document.createElement('td');
+                month.innerHTML=j+"月";
+                theTr.appendChild(month);
+            }
+            return theTr;
+        }
+
+        // 遍历数据
+        function loopAppend(bodyTr,mappingData){
+            var region=document.createElement('td');
+            region.innerHTML=mappingData.region;
+            var product=document.createElement('td');
+            product.innerHTML=mappingData.product;
+
+            if(judging==1){
+                bodyTr.appendChild(region);
+            }else if(judging==2){
+                bodyTr.appendChild(product);
+            }else{
+                bodyTr.appendChild(product);
+                bodyTr.appendChild(region);
+            }
+            
+            
+            for(var i=0;i<12;i++){
+                var monthContent=document.createElement('td');
+                monthContent.innerHTML=mappingData.sale[i];
+                bodyTr.appendChild(monthContent);
+            }
+            return bodyTr;
+        }
+    </script> -->
+</html>

@@ -1,0 +1,156 @@
+<html>
+    <head>
+            <link rel="stylesheet" href="work01.css"/>
+    </head>
+    <body>
+        <p>地区选择：</p>
+        <select id="region-select">
+            <option>华东</option>
+            <option>华南</option>
+            <option>华北</option>
+        </select>
+        <p>商品种类：</p>
+        <select id="kind-select">
+            <option>手机</option>
+            <option>笔记本</option>
+            <option>智能音箱</option>
+        </select>
+        <div id="region-table-wrapper">
+        </div>
+    </body>
+    <script type="text/javascript">
+        var region=document.getElementById('region-select');
+        var tableWrapper=document.getElementById('region-table-wrapper');
+        var kind=document.getElementById('kind-select');
+        var sourceData = [{
+            product: "手机",
+            region: "华东",
+            sale: [120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270]
+        }, {
+            product: "手机",
+            region: "华北",
+            sale: [80, 70, 90, 110, 130, 145, 150, 160, 170, 185, 190, 200]
+        }, {
+            product: "手机",
+            region: "华南",
+            sale: [220, 200, 240, 250, 260, 270, 280, 295, 310, 335, 355, 380]
+        }, {
+            product: "笔记本",
+            region: "华东",
+            sale: [50, 60, 80, 110, 30, 20, 70, 30, 420, 30, 20, 20]
+        }, {
+            product: "笔记本",
+            region: "华北",
+            sale: [30, 35, 50, 70, 20, 15, 30, 50, 710, 130, 20, 20]
+        }, {
+            product: "笔记本",
+            region: "华南",
+            sale: [80, 120, 130, 140, 70, 75, 120, 90, 550, 120, 110, 100]
+        }, {
+            product: "智能音箱",
+            region: "华东",
+            sale: [10, 30, 4, 5, 6, 5, 4, 5, 6, 5, 5, 25]
+        }, {
+            product: "智能音箱",
+            region: "华北",
+            sale: [15, 50, 15, 15, 12, 11, 11, 12, 12, 14, 12, 40]
+        }, {
+            product: "智能音箱",
+            region: "华南",
+            sale: [10, 40, 10, 6, 5, 6, 8, 6, 6, 6, 7, 26]
+        }]
+
+        //region-select的change事件
+        region.onchange=function(){
+            getNewForm(getSelected());
+        }
+        
+        // kind-select 的change事件
+        kind.onchange=function(){
+            getNewForm(getSelected());
+        }
+        // 根据select选项获取数据
+        function getSelected(){
+           /* region.selectedIndex  直接获取选中值的下标，从0开始*/
+           var selectValue= region.children[region.selectedIndex].value;
+           /* 获取商品种类选项的值 */
+           var kindValue=kind.children[kind.selectedIndex].value;
+           var mappingData=[];
+            for(var i in sourceData){
+                if(sourceData[i].region==selectValue&&sourceData[i].product==kindValue){
+                    mappingData.unshift(sourceData[i]);
+                }
+            }
+            return mappingData;
+        }
+
+        // 渲染新的表格
+        function getNewForm(mappingData){
+            // 若原来有table，则先删除
+            while(tableWrapper.hasChildNodes()){
+                tableWrapper.removeChild(tableWrapper.firstChild);
+            }
+            var table=document.createElement('table');
+            var thead=document.createElement('thead');
+            thead.appendChild(generateHead());
+            table.appendChild(thead);                       // 遍历表头并存储
+            
+            var tbody=document.createElement('tbody');
+            tbody.setAttribute('class','thebody');
+            table.appendChild(tbody);                       // 创建表格体
+
+            // 遍历数据
+            for(var k in mappingData){
+               var bodyTr=document.createElement('tr');
+               bodyTr=loopAppend(bodyTr,mappingData[k]);
+               tbody.appendChild(bodyTr);
+                console.log(mappingData[k].product);
+                
+            }
+
+            
+            tableWrapper.appendChild(table);
+            console.log(mappingData);
+        }
+        
+        // 遍历生成新的表头
+        function generateHead(){
+            var theHead;
+            var theTr=document.createElement('tr');
+            theTr.setAttribute('class','list');
+            var productName=document.createElement('td');
+            productName.innerHTML="商品";
+            theTr.appendChild(productName);
+            var addr=document.createElement('td');
+            addr.innerHTML="地区";
+            theTr.appendChild(addr);
+
+            for(var j=1;j<=12;j++){
+                var month=document.createElement('td');
+                month.innerHTML=j+"月";
+                theTr.appendChild(month);
+            }
+            return theTr;
+        }
+        
+        // 遍历数据
+        function loopAppend(bodyTr,mappingData){
+            var product=document.createElement('td');
+            product.innerHTML=mappingData.product;
+            bodyTr.appendChild(product);
+
+            var region=document.createElement('td');
+            region.innerHTML=mappingData.region;
+            bodyTr.appendChild(region);
+            for(var i=0;i<12;i++){
+                var monthContent=document.createElement('td');
+                monthContent.innerHTML=mappingData.sale[i];
+                bodyTr.appendChild(monthContent);
+            }
+            return bodyTr;
+        }
+        </script>
+</html>
+
+
+
