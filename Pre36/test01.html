@@ -1,0 +1,309 @@
+<?xml version="1.0" standalone="no"?>   
+<!-- standalone 表明是否含有外部文件引用 No 表示有引用-->
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+    <!--        矩形 <rect>
+                圆形 <circle>
+                椭圆 <ellipse>
+                线 <line>
+                折线 <polyline>
+                多边形 <polygon>
+                路径 <path>
+    -->
+
+<svg width="100%" height="100%" version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+
+<!--circle圆 cx x坐标 cy y坐标   r 半径  stroke 边框颜色  stroke-width:边框粗细  fill 填充颜色 -->
+<!-- <circle cx="50" cy="50" r="40" stroke="black"
+stroke-width="2" fill="red"/>-->
+
+<!-- rect矩形 
+<rect width="300" height="100"
+style="fill:rgb(0,0,255);stroke-width:1;
+stroke:rgb(0,0,0)"/> 
+
+<rect x="20" y="20" width="250" height="250"
+style="fill:blue;stroke:pink;stroke-width:5;
+fill-opacity:1;stroke-opacity:0"/>
+    x y 相对页面位置  rx ry 相对于x y 方向上的圆角
+    fill-opacity 透明度 1 ：完全透明 0 不透明 
+     stroke-opacity 1不透明 0 完全透明
+     但是就算设为0 了，设定的边框宽度还是存在的，
+     宽度不会消失，依然占据那么多位置
+-->
+
+<!-- ellipse 椭圆
+        cx 属性定义圆点的 x 坐标
+            cy 属性定义圆点的 y 坐标
+            rx 属性定义水平半径
+            ry 属性定义垂直半径 
+            <ellipse cx="300" cy="150" rx="200" ry="80"
+            style="fill:rgb(200,100,50);
+            stroke:rgb(0,0,100);stroke-width:2"/> 
+    <ellipse cx="240" cy="100" rx="220" ry="30" style="fill:purple"/>
+
+    <ellipse cx="220" cy="70" rx="190" ry="20" style="fill:lime"/>
+
+    <ellipse cx="210" cy="45" rx="170" ry="15" style="fill:yellow"/>
+    </svg>
+cx 相对于椭圆中心点，相对于左边的距离；cy  相对于椭圆中心点，相对于上边的距离；
+<ellipse cx="240" cy="100" rx="220" ry="30"
+style="fill:yellow"/>
+
+<ellipse cx="240" cy="100" rx="200" ry="20"
+style="fill:white"/>
+        cx 一样，rx 第二个更小，会显示小的被打的包围
+-->
+
+<!--line 线段 x1 y1 表明起始点 x2 y2 表明终止点 
+<line x1="0" y1="0" x2="400" y2="400"
+style="stroke:rgb(99,99,99);stroke-width:2"/>
+-->
+
+<!-- polygon多边形 points 定义多个点 
+<polygon points="10,210 300,210 170,250"
+style="fill:#cccccc;
+stroke:#000000;stroke-width:1"/>
+
+<polygon points="220,100 300,210 170,250 123,234"
+style="fill:#cccccc;
+stroke:#000000;stroke-width:1"/>
+
+<polygon points="220,100 300,900"
+style="fill:#cccccc;
+stroke: chocolate;stroke-width:1"/>
+
+-->
+
+<!--polyline折线图 
+    画出一个折线，依次更换第二个参数，  
+<polyline points="0,0 0,60 60,60 60,80 80,80 80,150"
+style="fill:white;stroke:red;stroke-width:2"/>
+-->
+
+<!--path路径标签 M起始位置 L移动到 Z关闭路径
+    大写：绝对定位   小写：相对定位
+<path d="M250 150 S150 350 S350 350 Z" />
+
+
+
+<path d="M153 334
+C153 334 151 334 151 334
+C151 339 153 344 156 344
+C164 344 171 339 171 334
+C171 322 164 314 156 314
+C142 314 131 322 131 334
+C131 350 142 364 156 364
+C175 364 191 350 191 334
+C191 311 175 294 156 294
+C131 294 111 311 111 334
+C111 361 131 384 156 384
+C186 384 211 361 211 334
+C211 300 186 274 156 274"
+style="fill:white;stroke:red;stroke-width:2"/>
+
+-->
+
+
+<!--defs filter 高斯模糊（Gaussian Blur）  id 属性来定义向图形应用哪个滤镜。只能用Id ，class不能用
+    filter:url() 定义连接到那个滤镜   stdDeviation 定义模糊程度
+    in="SourceGraphic" 这个部分定义了由整个图像创建效果
+
+<defs>
+        <filter id="Gaussian_Blur">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="0" />
+        </filter>
+</defs>
+        
+        <ellipse cx="200" cy="150" rx="70" ry="40"
+        style="fill:#ff0000;stroke:#000000;
+        stroke-width:2;filter:url(#Gaussian_Blur)"/>
+-->
+
+<!--有两种主要的渐变类型：线性渐变 放射性渐变  
+    <linearGradient> 可用来定义 SVG 的线性渐变
+    当 y1 和 y2 相等，而 x1 和 x2 不同时，可创建水平渐变
+    当 x1 和 x2 相等，而 y1 和 y2 不同时，可创建垂直渐变
+    当 x1 和 x2 不同，且 y1 和 y2 不同时，可创建角形渐变
+    offset 纯色占用的百分比。按照从上到下顺序加载
+        若一开始设为 0%，第二个设为100%。则从1到2渐变。
+        若第一个不为0%，为<100%,X%纯色填充，剩余百分比再渐变
+        若第一个为 100%，则以第一种纯色填充
+    
+    0 完全透明 1 不透明
+    
+    水平渐变
+    <defs>
+        <linearGradient id="orange_red" x1="0%" y1="0%" x2="100%" y2="0%">
+        
+        <stop offset="90%" style="stop-color:rgb(255,0,0);
+        stop-opacity:1"/>
+        <stop offset="0%" style="stop-color:rgb(255,255,0);
+        stop-opacity:1"/>
+        </linearGradient>
+    </defs>
+        
+    <ellipse cx="200" cy="190" rx="85" ry="55"
+    style="fill:url(#orange_red)"/>
+
+    垂直渐变
+    <defs>
+        <linearGradient id="orange_red" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:rgb(255,255,0);
+        stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:rgb(255,0,0);
+        stop-opacity:1"/>
+        </linearGradient>
+    </defs>
+            
+        <ellipse cx="200" cy="190" rx="85" ry="55"
+        style="fill:url(#orange_red)"/>
+    放射渐变 
+        cx  cy  r 定义最外层圆  fx fy 定义内层圆（fx fy 定义内层圆的放射中心坐标）
+        r 定义内层圆的放射半径  <=16°   <=88°
+
+    <defs>
+            <radialGradient id="grey_blue" cx="40%" cy="99%" r="50%"
+            fx="50%" fy="50%">
+            <stop offset="0%" style="stop-color:rgb(200,200,200);
+            stop-opacity:0"/>
+            <stop offset="100%" style="stop-color:rgb(0,0,255);
+            stop-opacity:1"/>
+            </radialGradient>
+    </defs>
+            
+            <ellipse cx="230" cy="200" rx="110" ry="100"
+            style="fill:url(#grey_blue)"/>
+    -->
+    
+      
+<!-- feBlend 滤镜
+     linearGradient  一般 y1 y2 值相同，不会有差值，有差值，则x2  y2 会偏移他们的差值（第二个点坐标 x2+|y1-y2|）
+     三个stop ，1和2之间的差值，显示2的左侧部分；2和3之间的差值，显示2的右侧部分；
+     若3比2小，则2的右侧部分不会显示
+   
+
+<defs> 
+<linearGradient id="MyGradient" gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="300" y2="0"> 
+	<stop offset="0" style="stop-color:#000000"/> 
+	<stop offset=".67" style="stop-color:#ffff00"/> 
+	<stop offset="1" style="stop-color:#000000"/> 
+</linearGradient> 
+<filter id="normal"> 
+	<feBlend mode="normal" in2="BackgroundImage"/> 
+</filter> 
+<filter id="multiply"> 
+	<feBlend mode="multiply" in2="BackgroundImage"/> 
+</filter> 
+<filter id="screen"> 
+	<feBlend mode="screen" in2="BackgroundImage"/> 
+</filter> 
+<filter id="darken"> 
+	<feBlend mode="darken" in2="BackgroundImage"/> 
+</filter> 
+<filter id="lighten"> 
+	<feBlend mode="lighten" in2="BackgroundImage"/> 
+</filter> 
+</defs> 
+
+<g style="enable-background: new"> 
+<rect x="40" y="20" width="300" height="450" style="fill:url(#MyGradient)"/> 
+<g style="font-size:75;fill:#888888;fill-opacity:.6"> 
+	<text x="50" y="90" style="filter:url(#normal)">Normal</text> 
+	<text x="50" y="180" style="filter:url(#multiply)">Multiply</text> 
+	<text x="50" y="270" style="filter:url(#screen)">Screen</text> 
+	<text x="50" y="360" style="filter:url(#darken)">Darken</text> 
+	<text x="50" y="450" style="filter:url(#multiply)">Lighten</text> 
+</g> 
+</g>
+--> 
+
+<!-- feColorMatrix 滤镜 
+<defs> 
+        <linearGradient id="MyGrad" gradientUnits="userSpaceOnUse" x1="100" y1="0" x2="500" y2="0"> 
+            <stop offset="0" style="stop-color:#ff00ff"/> 
+            <stop offset=".33" style="stop-color:#88ff88"/> 
+            <stop offset=".67" style="stop-color:#2020ff"/> 
+            <stop offset="1" style="stop-color:#d00000"/> 
+        </linearGradient> 
+        <filter id="Matrix"> 
+            <feColorMatrix type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/> 
+        </filter> 
+        <filter id="Saturate"> 
+            <feColorMatrix type="saturate" values="0.4"/> 
+        </filter> 
+        <filter id="HueRotate"> 
+            <feColorMatrix type="hueRotate" values="90"/> 
+        </filter> 
+        <filter id="Luminance"> 
+            <feColorMatrix type="luminanceToAlpha" result="a"/> 
+            <feComposite in="SourceGraphic" in2="a" operator="in"/> 
+        </filter> 
+</defs> 
+        
+        <g style="font-size:50;fill:url(#MyGrad)">
+            <text x="50" y="60">Unfilteredxvbcvbv</text> 
+            <text x="50" y="120" style="filter:url(#Matrix)">Matrixwqeqewqwe</text> 
+            <text x="50" y="180" style="filter:url(#Saturate)">Saturateqweqweqe</text> 
+            <text x="50" y="240" style="filter:url(#HueRotate)">HueRotateqweqweqw</text> 
+            <text x="50" y="300" style="filter:url(#Luminance)">Luminanceqweqweq</text> 
+        </g> 
+-->       
+<!-- feOffset 滤镜 
+<defs>
+        <filter id="filter" x="0" y="0">
+            <feGaussianBlur stdDeviation="5"/>
+            <feOffset dx="5" dy="5"/>
+        </filter>
+</defs>
+        
+        <rect width="90" height="90" fill="grey" filter="url(#filter)"/>
+        <rect width="90" height="90" fill="yellow" stroke="black"/>
+-->        
+
+<!-- 为a 链接添加 svg 
+
+<a xlink:href="http://www.w3schools.com" target="_blank">
+    <rect x="20" y="20" width="250" height="250"
+    style="fill:blue;stroke:pink;stroke-width:5;opacity:0.9"/>
+    </a>
+-->
+
+<!-- 5秒淡出矩形 
+<rect x="20" y="20" width="250" height="250" style="fill:blue">
+        <animate attributeType="CSS" attributeName="opacity" 
+        from="1" to="0" dur="5s" repeatCount="indefinite" />
+</rect>
+-->
+
+<!-- 动态改变矩形大小   animateColor 属性可以不用
+    
+    <rect id="rec" x="300" y="100" width="300" height="100" style="fill:lime"> 
+<animate attributeName="x" attributeType="XML" begin="0s" dur="6s" fill="freeze" from="300" to="0"/> 
+<animate attributeName="y" attributeType="XML" begin="0s" dur="6s" fill="freeze" from="100" to="0"/> 
+<animate attributeName="width" attributeType="XML" begin="0s" dur="6s" fill="freeze" from="300" to="800"/> 
+<animate attributeName="height" attributeType="XML" begin="0s" dur="6s" fill="freeze" from="100" to="300"/> 
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="black" begin="2s" dur="4s" fill="freeze"/>
+<animateTransform attributeName="transform" begin="0s" dur="3s"  type="scale" from="1" to="1.5" repeatCount="indefinite"/>
+-->
+
+<rect id="rec" x="300" y="100" width="300" height="100" style="fill:lime"> 
+<animateMotion path="M10,80 q100,120 120,20 q140,-50 160,0" begin="0s" dur="3s" repeatCount="indefinite"/>
+
+
+
+
+<!-- <embed src="rect.svg" width="300" height="100" 
+type="image/svg+xml"
+pluginspage="http://www.adobe.com/svg/viewer/install/" />
+
+<object data="rect.svg" width="300" height="100" 
+type="image/svg+xml"
+codebase="http://www.adobe.com/svg/viewer/install/" />
+
+<iframe src="rect.svg" width="300" height="100">
+</iframe> -->
+

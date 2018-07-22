@@ -1,0 +1,79 @@
+<html>
+ <head>
+  <script type="application/javascript">
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+
+                // 画一条线
+                /* ctx.strokeStyle="#000000";
+                ctx.beginPath();
+                ctx.moveTo(20,20);
+                ctx.lineTo(80,80);
+                ctx.stroke(); */
+               
+                // 画一个矩形
+                /* ctx.fillStyle="#ff0000";
+                ctx.strokeStyle="#000000";
+                ctx.fillRect(30,30,60,60); */
+                
+                // 画一个圆形
+                /* ctx.beginPath();
+                ctx.arc(80,80,60,0,2*Math.PI,true);
+                ctx.stroke(); */
+
+                // 显示一些文字
+                /* ctx.font="80px Georgia";
+                ctx.strokeText("你好！",80,80,300); */
+
+                // 画一个时钟
+                /* ctx.beginPath();
+                ctx.arc(200,200,100,0,2*Math.PI,true);       //时钟轮廓
+                ctx.font="20px NSimSun";
+                ctx.strokeText("12",190,120);
+                ctx.strokeText("3",280,210);
+                ctx.strokeText("6",200,295);
+                ctx.strokeText("9",110,210);
+                    // 2
+                ctx.moveTo(120,150);
+                ctx.lineTo(130,160);
+                ctx.moveTo(150,120);
+                ctx.lineTo(160,130);
+                    // 1
+                ctx.moveTo(250,120);
+                ctx.lineTo(240,130);
+                ctx.moveTo(280,150);
+                ctx.lineTo(270,160);
+                    // 4
+                ctx.moveTo(280,250);
+                ctx.lineTo(270,240);
+                ctx.moveTo(250,280);
+                ctx.lineTo(240,270);
+                    // 3
+                ctx.moveTo(120,250);
+                ctx.lineTo(130,240);
+                ctx.moveTo(150,280);
+                ctx.lineTo(160,270);
+                
+                ctx.moveTo(200,200);
+                ctx.lineTo(235,140);
+                ctx.lineTo(220,150);
+
+                ctx.moveTo(235,140);
+                ctx.lineTo(240,155);
+                
+                ctx.stroke(); */
+
+                // 画一朵云
+               
+                
+        }
+    }
+</script>
+ </head>
+ <body onload="draw();">        
+     <!-- onload页面加载结束时执行；也可以用window.setTimeout()；window.setInterval() -->
+   <canvas id="canvas" width="350" height="350"></canvas>
+ </body>
+</html> 
