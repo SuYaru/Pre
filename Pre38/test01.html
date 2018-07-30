@@ -1,0 +1,36 @@
+<html>
+    <head>
+      <title>Canvas tutorial</title>
+      
+      <!-- <style type="text/css">
+        canvas { border: 1px solid black; }
+      </style> 
+      onload="draw();"
+    -->
+    </head>
+    <body >
+      <!-- <canvas id="tutorial" ></canvas> -->
+      <div id="result"></div>
+    </body>
+    <script type="text/javascript">
+        /* function draw(){
+          var canvas = document.getElementById('tutorial');
+          if (canvas.getContext){           // 检查是否支持canvas
+            var ctx = canvas.getContext('2d');
+          }
+        }
+        var localStorage=window.localStorage;
+        localStorage.colorSetting = '#a4509b';
+        console.log(localStorage.colorSetting); */
+
+        // Check browser support
+        if (typeof(localStorage) !== "undefined") {
+            // Store
+            localStorage.setItem("lastname", "Gates");
+            // Retrieve
+            document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+        } else {
+            document.getElementById("result").innerHTML = "抱歉！您的浏览器不支持 Web Storage ...";
+        }
+    </script>
+</html>
