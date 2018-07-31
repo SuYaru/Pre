@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="UTF-8"/>
+		<script src="test.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var index = 'index.html';
+			
+			function changeURL(){
+				var url = index+'#'+document.getElementById('urlVal').value;
+				var state = {
+				   title: window.document.title,
+				     url: window.location.href, 
+				    time:new Date().getTime()
+				};
+				window.history.pushState(state, document.title, url);//添加到历史记录
+				console.log(history);
+			}
+			
+			window.onhashchange = function(e){//根据hash值变化 触发
+				console.log(e.oldURL)
+				document.getElementsByTagName('h1')[0].innerHTML = e.newURL;
+			}
+		</script>
+	</head>
+	<body >
+		<h1>首页</h1>
+		<input type="text" name="" id="urlVal"  />
+		<input type="button" name="" id="" value="改变当前URL" onclick="changeURL()" />
+		</br>
+		<input type="button" name="" id="" value="返回" onclick="window.history.back()" />
+		<input type="button" name="" id="" value="前进" onclick="window.history.forward()" />
+	</body>
+</html>

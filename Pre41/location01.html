@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <title>This is Location</title>
+    <body>
+        <!-- 基于以下HTML，点击对应按钮时候，改变div中的内容为按钮的文字。
+            刷新页面的时候，保持div中的显示
+            页面URL copy再打开后，保留渲染状态
+            通过location.hash来实现 -->
+        
+        <button id="a">A</button>
+        <button id="b">B</button>
+        <button id="c">C</button>
+        <button id="d">D</button>
+        <button id="e">E</button>
+        <button id="f">F</button>
+
+        <div id="contABC"></div>
+        <div id="contDEF"></div>
+    </body>
+    <script type="text/javascript">
+        var contBefore=document.getElementById('contABC');
+        var contAfter=document.getElementById('contDEF');
+        var aa=document.getElementById('a');
+        var bb=document.getElementById('b');
+        var cc=document.getElementById('c');
+        var dd=document.getElementById('d');
+        var ee=document.getElementById('e');
+        var ff=document.getElementById('f');
+        var group=[];
+        // 解析Hash，获取状态参数() 
+        window.onhashchange=Rendering();
+        function analyseHash(){
+            if(location.hash==""){      //hash不存在时，人为设定
+                 location.hash=" ";
+            }
+            
+            var hre=location.hash;
+            var length=hre.length-1;
+            var k=0;                    // 数组group[0] 存放ABC的hash值，group[1] 存放DEF的hash值
+            if(hre.charAt(length)=='A'||hre.charAt(length)=='B'||hre.charAt(length)=='C'){
+                group[k]=hre.charAt(length); 
+            }
+            if(hre.charAt(length)=='D'||hre.charAt(length)=='E'||hre.charAt(length)=='F'){
+                group[++k]=hre.charAt(length); 
+            }
+            for(var j=length-1;j>1;j--){               //全部存到hash里，从后往前遍历
+                if(k==1){
+                    if(hre.charAt(j)=='A'||hre.charAt(j)=='B'||hre.charAt(j)=='C'){
+                        group[1-k]=hre.charAt(j);
+                        return group; 
+                    }
+                }else{
+                    if(hre.charAt(j)=='D'||hre.charAt(j)=='E'||hre.charAt(j)=='F'){
+                        group[1-k]=hre.charAt(j);
+                        return group;
+                    }
+                }
+            }
+            return group;
+        }
+        //渲染函数
+        function Rendering(){
+            var currentGroup=analyseHash();
+            contBefore.innerHTML=currentGroup[0];
+            contAfter.innerHTML=currentGroup[1];
+        }
+        aa.onclick=function(){
+            var ct=this.innerHTML;
+            location.hash+=ct;
+            Rendering();  
+        }
+        bb.onclick=function(){
+            var cb=this.innerHTML;
+            location.hash+=cb;
+            Rendering();
+        }
+        cc.onclick=function(){
+            var cc=this.innerHTML;
+            location.hash+=cc;
+            Rendering();
+        }
+        dd.onclick=function(){
+            var dd=this.innerHTML;
+            location.hash+=dd;
+            Rendering();
+        }
+        ee.onclick=function(){
+            var ee=this.innerHTML;
+            location.hash+=ee;
+            Rendering();
+        }
+        ff.onclick=function(){
+            var ff=this.innerHTML;
+            location.hash+=ff;
+            Rendering();
+        }
+       
+    </script>
+</html>

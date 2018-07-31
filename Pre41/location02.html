@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <title>This is Location</title>
+    <body>
+        <!-- 基于以下HTML，点击对应按钮时候，改变div中的内容为按钮的文字。
+            刷新页面的时候，保持div中的显示
+            页面URL copy再打开后，保留渲染状态
+            通过location.hash来实现 -->
+        
+        <button id="a">A</button>
+        <button id="b">B</button>
+        <button id="c">C</button>
+        <button id="d">D</button>
+        <button id="e">E</button>
+        <button id="f">F</button>
+
+        <div id="contABC"></div>
+        <div id="contDEF"></div>
+    </body>
+    <script type="text/javascript">
+        var contBefore=document.getElementById('contABC');
+        var contAfter=document.getElementById('contDEF');
+        var aa=document.getElementById('a');
+        var bb=document.getElementById('b');
+        var cc=document.getElementById('c');
+        var dd=document.getElementById('d');
+        var ee=document.getElementById('e');
+        var ff=document.getElementById('f');
+        var group=[];
+        var stack=[];
+
+        // 解析Hash，获取状态参数() 
+        window.onhashchange=Rendering();
+        function analyseHash(con){
+            var url=""
+            if(con!=undefined){      //hash不存在时，人为设定
+                var url='#'+con;
+                stack.unshift(con);
+            }
+            var state={
+                title: window.document.title,
+                url: window.location.href, 
+                time:new Date().getTime()
+            }; 
+            window.history.pushState(state,"",url);             // 每次更新地址
+            var length=stack.length;
+            var k=0;                    // 数组group[0] 存放ABC的hash值，group[1] 存放DEF的hash值
+            if(stack[0]=='A'||stack[0]=='B'||stack[0]=='C'){
+                group[k]=stack[0]; 
+            }
+            if(stack[0]=='D'||stack[0]=='E'||stack[0]=='F'){
+                group[++k]=stack[0]; 
+            }
+            for(var j=1;j<length;j++){               //全部存到hash里，从后往前遍历
+                if(k==1){
+                    if(stack[j]=='A'||stack[j]=='B'||stack[j]=='C'){
+                        group[1-k]=stack[j];
+                        return group; 
+                    }
+                }else{
+                    if(stack[j]=='D'||stack[j]=='E'||stack[j]=='F'){
+                        group[1-k]=stack[j];
+                        return group;
+                    }
+                }
+            }
+            return group;
+        }
+        
+        //渲染函数
+        function Rendering(con){
+            var currentGroup=analyseHash(con);
+            contBefore.innerHTML=currentGroup[0];
+            contAfter.innerHTML=currentGroup[1];
+        }
+        aa.onclick=function(){
+            var ca=this.innerHTML;
+            Rendering(ca);  
+        }
+        bb.onclick=function(){
+            var cb=this.innerHTML;
+            Rendering(cb); 
+        }
+        cc.onclick=function(){
+            var cc=this.innerHTML;
+            Rendering(cc);
+        }
+        dd.onclick=function(){
+            var dd=this.innerHTML;
+            Rendering(dd);
+        }
+        ee.onclick=function(){
+            var ee=this.innerHTML;
+            Rendering(ee);
+        }
+        ff.onclick=function(){
+            var ff=this.innerHTML;
+            Rendering(ff);
+        }
+       
+    </script>
+</html>

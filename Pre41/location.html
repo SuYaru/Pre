@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        Location && Hash
+    </head>
+    <title>This is Location</title>
+    <body>
+        <!-- 基于以下HTML，点击对应按钮时候，改变div中的内容为按钮的文字。
+            刷新页面的时候，保持div中的显示
+            页面URL copy再打开后，保留渲染状态
+            通过location.hash来实现 -->
+        <button id="a">A</button>
+        <button id="b">B</button>
+        <button id="c">C</button>
+        <div id="cont"></div>
+    </body>
+    <script type="text/javascript">
+        var content=document.getElementById('cont');
+        var aa=document.getElementById('a');
+        var bb=document.getElementById('b');
+        var cc=document.getElementById('c');
+
+        // 解析Hash，获取状态参数() 
+        function analyseHash(){
+            if(location.hash==""){      //hash不存在时，人为设定
+                 location.hash="test123";
+            }
+            var hre=location.hash;
+            return hre;
+        }
+        //渲染函数
+        function Rendering(){
+            var state=analyseHash();
+            content.innerHTML=state;
+            console.log("渲染函数");
+        }
+        aa.onclick=function(){
+            var ct=this.innerHTML;
+            location.hash=ct;
+            Rendering();
+            console.log(ct);
+        }
+        bb.onclick=function(){
+            var cb=this.innerHTML;
+            location.hash=cb;
+            Rendering();
+            console.log(cb);
+        }
+        cc.onclick=function(){
+            var cc=this.innerHTML;
+            location.hash=cc;
+            Rendering();
+            console.log(cc);
+        }
+        window.onhashchange=Rendering();
+    </script>
+</html>
