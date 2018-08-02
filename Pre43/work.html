@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript inheritance</title>
+    </head>
+    <div>
+        <span>
+                餐厅类
+                属性：金钱，座位数量、职员列表
+                方法：招聘职员，解雇职员
+                职员类
+                属性：ID，姓名，工资
+                方法：完成一次工作
+                服务员类，继承自职员
+                完成一次工作：如果参数是个数组，则记录客人点菜，如果参数不是数组则是上菜行为
+                厨师类，继承自职员
+                完成一次工作：烹饪出菜品
+                顾客类
+                方法：点菜，吃
+                菜品类
+                属性：名字、烹饪成本、价格 
+        </span>
+    </div>
+    <script>
+        /* */
+        function Restaurant(money,seats,staff){
+            this.money=money,
+            this.seats=seats,
+            this.staff=staff,
+            this.hire=function(Staff){
+                this.money-=Staff.salary;
+                this.staff.push(Staff.name);
+            };
+            this.fire=function(Staff){
+                this.money+=Staff.salary;
+                for(var i=0;i<staff.length;i++){
+                    if(Staff.name==staff[i]){
+                        staff.splice(i,1);
+                    }
+                }
+            }
+        }
+        
+        function Staff(name,salary){
+            this.id=Math.random()*100+100,
+            this.name=name,
+            this.salary=salary,
+            this.doingJob=function(){
+
+            };
+        };
+        function service(){
+            Staff.call(this);
+            this.doingJob=function(input){
+                if(input instanceof Array){
+                    this.menu=[];
+                    for(var i=0;i<input.length;i++){
+                        menu.push(input[i]);
+                    }
+                }else{
+                    alert("上菜咯!");
+                }
+            }
+        }
+        function Cook(name,salary){
+            Staff.call(this);
+            this.doingJob=function(){
+                alert("烧菜咯！");
+            }
+        }
+        function custom(){
+            this.selected=[];
+            this.eated=[];
+            this.select=function(){
+
+            }
+            this.eating=function(){
+
+            }
+        }
+        function Dishes(name,cost,price){
+            this.name=["五花肉","番茄炒蛋"];
+            this.cost=[15,10];
+            this.price=[30,20];
+        }
+        /* var ifeRestaurant = new Restaurant({
+            cash: 1000000,
+            seats: 20,
+            staff: []
+        });
+
+        var newCook = new Cook("Tony", 10000);
+        ifeRestaurant.hire(newCook);
+
+        console.log(ifeRestaurant.staff);
+
+        ifeRestaurant.fire(newCook);
+        console.log(ifeRestaurant.staff); */
+        
+    </script>
+</html>

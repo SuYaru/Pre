@@ -1,0 +1,65 @@
+<!DOCTYPE>
+<html>
+    <title>OOP</title>
+    <script type="text/javascript">
+       
+
+        // 创建构造函数
+        function Person(first, last, age, gender, interests) {
+            this.name = {
+                first,
+                last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+            this.bio = function() {
+                alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+            };
+            this.greeting = function() {
+                alert('Hi! I\'m ' + this.name.first + '.');
+            };
+        };
+        var person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+
+         function doSometing(){};
+         function Teacher(first, last, age, gender, interests, subject) {
+             
+            Person.call(this, first, last, age, gender, interests);
+            // call() 允许您调用一个在这个文件里别处定义的函数
+             // this 可以重新指定您调用的函数里所有“this”指向的对象
+             // 在Teacher 里运行 Person的构造函数
+             // this 指代Teacher函数，并作为参数传递给 Person()
+             // 以下定义相当于 
+             /* function Teacher(first, last, age, gender, interests, subject) {
+                this.name = {
+                    first,
+                    last
+                };
+                this.age = age;
+                this.gender = gender;
+                this.interests = interests;
+                this.subject = subject;
+            } 
+                多出的一个属性，定义在 Teacher 内部
+                可以达到继承的目的，简化代码
+            */
+            Teacher.prototype = Object.create(Person.prototype);
+            Teacher.prototype.constructor = Teacher;
+            this.subject = subject;     // 教师特有
+        }
+        var teacher1 = new Teacher('Dave', 'Griffiths', 31, 'male', ['football', 'cookery'], 'mathematics');
+        function Brick() {
+            this.width = 10;
+            this.height = 20;
+        }
+        function BlueGlassBrick() {
+            Brick.call(this);
+            // this 之后不设任何属性，设了width,100,10...也没用
+            this.opacity = 0.5;
+            this.color = 'blue';
+        }
+        // var bb=new BlueGlassBrick();
+        // bb.width;  10 可以调用Brick中的属性
+    </script>
+</html>

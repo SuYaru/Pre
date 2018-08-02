@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+    <title>OOP</title>
+    <script type="text/javascript">
+    function A(x) {
+        this.x = x;
+    }
+    A.prototype.getX = function(){
+        return this.x;
+    }
+    // 实例化A
+    var a = new A(1);
+    console.log(a.x); // 1
+    console.log(a.getX()); // 输出1
+    // 现在我们来创建构造函数B，让其B继承与A，如下代码：
+    function B(x,y) {
+        this.y = y;
+        A.call(this,x);
+    }
+    B.prototype = new A();  // 原型继承
+    console.log(B.prototype.constructor); // 输出构造函数A，指针指向与构造函数A
+    B.prototype.constructor = B;          // 重新设置构造函数，使之指向B
+    console.log(B.prototype.constructor); // 指向构造函数B
+    B.prototype.getY = function(){
+        return this.y;
+    }
+    var b = new B(1,2);
+    console.log(b.x); // 1
+    console.log(b.getX()); // 1
+    console.log(b.getY()); // 2
+
+    // 下面是演示对构造函数getX进行重写的方法如下：
+    B.prototype.getX = function(){
+        return this.x;
+    }
+    var b2 = new B(10,20);
+    console.log(b2.getX());  // 输出10
+    </script>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开一家餐厅</title>
+</head>
+
+<body>
+    <div>
+        <span>
+                餐厅类
+                属性：金钱，座位数量、职员列表
+                方法：招聘职员，解雇职员
+                职员类
+                属性：ID，姓名，工资
+                方法：完成一次工作
+                服务员类，继承自职员
+                完成一次工作：如果参数是个数组，则记录客人点菜，如果参数不是数组则是上菜行为
+                厨师类，继承自职员
+                完成一次工作：烹饪出菜品
+                顾客类
+                方法：点菜，吃
+                菜品类
+                属性：名字、烹饪成本、价格 
+        </span>
+    </div>
+    <script>
+        'use strict'
+        //ES5
+         /* function Restaurant(object) {
+             this.cash = object.cash;
+             this.seats = object.seats;
+             this.staff = object.staff;
+         }
+         Restaurant.prototype = {
+             constructor: Restaurant,
+             hire: function (value) {
+                 this.staff.push(value);
+             },
+             fire: function (value) {
+                 let index = this.staff.indexOf(value);
+                 this.staff.splice(index, 1);
+             }
+         }
+         function Clerk(name, salary) {
+             this.id =Math.floor(Math.random()*100)+100;
+            this.name = name;
+             this.salary = salary;
+         }
+         Clerk.prototype.finishOneWork = function (type) {
+             switch (type) {
+                 case 'clerk':
+                     break;
+                 case 'waiter':
+                     break;
+                 case 'cook':
+                     break;
+                 default:
+                     break;
+             }
+         }
+         //服务类
+         function Waiter() {
+             //继承属性  args 作为数组传参数给Clerk
+             // 将一个数组默认的转换为一个参数列表
+             // Clerk.call(this,id,name,salary) 只是参数列表
+             // 当子类参数与父类参数个数相同时：用apply
+             // 子类参数数量大于父类参数数量时：用call
+             Clerk.apply(this, arguments); 
+         } 
+         //继承方法
+         extend(Waiter, Clerk);
+            //厨师类
+         function Cook() {
+             Clerk.apply(this, arguments); //继承属性
+         }
+         extend(Cook, Clerk);
+         //顾客类
+         function client() {
+         }
+         client.prototype.eat = function () {
+             console.log('吃吃吃吃！！');
+         }
+         client.prototype.order = function () {
+             console.log('快上菜');
+         }
+         function Menu(name, costing, price) {
+             this.name = name;
+             this.costing = costing;
+            this.price = price;
+         }
+         //空对象作为中介
+         function extend(Child, Parent) {
+             let F = function () {};
+             F.prototype = Parent.prototype;
+             Child.prototype = new F();
+             Child.prototype.constructor = Child;
+             Child.sup=Parent.prototype;
+             if(Parent.prototype.constructor === Object.prototype.constructor) {
+                // 检测超类原型的构造器是否为原型自身
+                Parent.prototype.constructor = Parent;
+            }
+         } */
+        //ES6
+        class Restaurant {
+            constructor(object) {
+                this.cash = object.cash;
+                this.seats = object.seats;
+                this.staff = object.staff;
+            }
+            hire(value) {
+                this.staff.push(value);
+            }
+            fire(value) {
+                let index = this.staff.indexOf(value);
+                this.staff.splice(index, 1);
+            }
+        }
+        //职员类
+        class Clerk {
+            constructor(name, salary) {
+                this.id =Math.floor(Math.random()*100)+100;
+                this.name = name;
+                this.salary = salary;
+            }
+            finishOneWork(type) {
+                switch (type) {
+                    case 'clerk':
+                        break;
+                    case 'waiter':
+                        break;
+                    case 'cook':
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+        //服务员类
+        class Waiter extends Clerk {
+            constructor(id, name, salary) {
+                super(id, name, salary);
+            }
+        }
+        //厨师
+        class Cook extends Clerk {
+            constructor(id, name, salary) {
+                super(id, name, salary);
+            }
+        }
+        //顾客
+        class Client{
+            eat() {
+                console.log('吃吃吃吃！！');
+            }
+            order() {
+                console.log('快上菜');
+            }
+        }
+        class Menu extends Clerk {
+            constructor(name, costing, price) {
+                this.name = name;
+                this.costing = costing;
+                this.price = price;
+            }
+        }
+    </script>
+</body>
+
+</html>

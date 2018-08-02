@@ -1,0 +1,51 @@
+<!DOCTYPE>
+<html>
+    <title>OOP</title>
+    <script type="text/javascript">
+        // console 里输入 person1.name person1.greeting() 即可获得输出内容
+        /* function Person(name){
+            this.name=name;
+            this.greeting=function(){
+                alert("Hello!"+name);
+            }
+        }
+        var person1=new Person('Lili');
+        var person2=new Person('Tom'); */
+
+        // 创建构造函数
+        function Person(first, last, age, gender, interests) {
+            this.name = {
+                first,
+                last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+            this.bio = function() {
+                alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+            };
+            this.greeting = function() {
+                alert('Hi! I\'m ' + this.name.first + '.');
+            };
+        };
+        var person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+
+        // console 输入 : var person2=new Object();
+        // person2.doing=function(){alert("Who are you ?");}
+        // person2.doing();     输出alert 提示
+        // 也可以设定 persion2.XXX 各种属性
+        // Object 直接设定属性
+         /* var person3=new Object({
+                name:'AAA';
+                age:34,
+                doing:function(){
+                    alert("What are you  弄啥嘞！");
+                }
+         }); */
+         function doSometing(){};
+         
+         // 构造新的对象
+         // var person3 = new person1.constructor('Karen', 'Stephenson', 26, 'female', ['playing drums', 'mountain climbing']);
+
+    </script>
+</html>
