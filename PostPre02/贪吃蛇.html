@@ -1,0 +1,45 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8"></head>
+    <title>小贪吃蛇</title>
+    <style>
+        .map{
+            width: 800px;
+            height: 800px;
+            background-color: #cccccc;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="map"></div>
+    <script src="food.js"></script>
+    <script src="snake.js"></script>
+    <script src="game.js"></script>
+</body>
+<script>
+    var gm=new Game(document.querySelector(".map"));
+    gm.init();
+
+    // 测试键盘按下的按键
+    /* document.onkeydown=function(e){
+        console.log(e);         // 事件参数对象
+    } */
+
+
+    // 将以下游戏调用封装
+    /* var fd=new Food();
+    fd.init();
+
+    var sn=new Snake();
+    sn.init(document.querySelector(".map"));
+    setInterval(function(){
+        sn.move(fd,document.querySelector(".map"));
+        sn.init(document.querySelector(".map"));        // 重新画一条蛇
+    },200);
+     */
+
+
+</script>
+</html>
