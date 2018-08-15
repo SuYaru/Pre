@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>继承案例</title>
+        <script>
+            function Animal(name,weight){
+                this.name=name;
+                this.weight=weight;
+            }
+            Animal.prototype.eat=function(){
+                console.log("今天吃素");
+            }
+        
+            function Dog(color){
+                this.color=color;
+            }
+            Dog.prototype=new Animal("哈巴狗",23);
+            Dog.prototype.bitMan=function(){
+                console.log("我不咬人");
+            }
+            function TianYuan(name){
+                this.name=name;
+            }
+            TianYuan.prototype=new Dog("黑色");
+            TianYuan.prototype.doing=function(){
+                console.log("小姐姐长的真好看！");
+            }
+
+            var little=new TianYuan("小白");
+            console.log("我叫"+little.name+"我的颜色是："+little.color+"我的体重是"+little.weight);
+            little.doing();
+            little.bitMan();
+            little.eat();
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+      function Person(age,sex) {
+      this.age=age;
+      this.sex=sex;
+    }
+    Person.prototype.sex="女";
+    var per=new Person(10,"男");
+    console.log(per.sex);
+    //因为JS是一门动态类型的语言,对象没有什么,只要点了,那么这个对象就有了这个东西,没有这个属性,
+    // 只要对象.属性名字,对象就有这个属性了,但是,该属性没有赋值,所以,结果是:undefined
+    console.log(per.fdsfdsfsdfds);
+
+    //通过实例对象能否改变原型对象中的属性值?不能
+    //就想改变原型对象中属性的值,怎么办?直接通过原型对象.属性=值;可以改变
+    Person.prototype.sex="哦唛嘎的";
+    per.sex="人";
+    console.log(per.sex);
+    console.dir(per);       // 输出 Person 构造函数，在per的_proto_ 下的sex="哦唛嘎的"
+                            // 改变了原来的  Person.prototype.sex="女"; 
+    </script>
+</head>
+</html>

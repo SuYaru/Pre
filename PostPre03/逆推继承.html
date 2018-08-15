@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+
+
+    function F1() { 
+      // this.age = age;
+    }
+    function F2() {
+       // this.age = age;
+    }
+    F2.prototype = new F1(10);
+    function F3() {
+      // this.age = age;
+    }
+    F3.prototype = new F2(20);
+
+    var f3 = new F3();
+
+    //  当 F3 F2 都有设 age 的时候，f3.age==undefined
+    //  当 F3 不设age 时，输出f2 的值20
+    // F3 F2 都不设 age时输出 f1 10
+    // F3 F2 F1 都不设 age时输出 f1 10
+    console.log(f3.age);
+    
+
+
+  </script>
+</head>
+<body>
+
+
+</body>
+</html>

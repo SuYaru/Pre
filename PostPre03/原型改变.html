@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>title</title>
+  <script>
+    function Person(age) {
+      this.age = age;
+    }
+
+   
+    //先添加原型方法
+    Person.prototype.sayHi = function () {
+      console.log("您好");
+    };
+     //指向改变了,如果不指向自己的构造函数，那么就改变咯？
+     // Person.prototype 就已改变了 原型指向 
+     Person.prototype = {
+        constructor:Person,
+        eat: function () {
+            console.log("吃");
+        }
+    };
+    var per = new Person(10);
+    per.sayHi();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
