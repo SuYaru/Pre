@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html>
+    <title>
+        bind
+    </title>
+    <script>
+        /* function f1(x,y){
+            console.log(x+y+"=======>"+this);
+        }
+         // bind : 复制  参数可以在复制的时候传进去，也可以在调用的时候传进去
+         // null 默认指向window
+         var ff=f1.bind(null);
+         ff(10,34); */
+
+        //  
+        function Person(age){
+            this.age=age;
+        }
+        Person.prototype.working=function(){
+            console.log("It's my job"+this.age);
+        }
+        function Student(age){
+            this.age=age;
+        }
+        var per=new Person(78);
+        var stu=new Student(23);
+        var fu=window.per.working.bind(this);      // 若stu 改为this，则this 指向weindow
+        fu();
+    </script>
+</html>

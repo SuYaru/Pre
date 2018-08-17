@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>对自己狠点</title>
+  <style>
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+
+    img {
+      width: 200px;
+      height: 180px;
+    }
+
+    input {
+      margin-left: 30%;
+    }
+  </style>
+  <script>
+    //$永远都是24k纯帅的十八岁的杨哥$
+  </script>
+</head>
+<body>
+<ul>
+  <li><img src="brs.jpg" alt=""><br/><input type="button" value="赞(1)"></li>
+  <li><img src="ct.jpg" alt=""><br/><input type="button" value="赞(1)"></li>
+</ul>
+<script>
+
+  //获取所有的按钮
+  //根据标签名字获取元素
+  function my$(tagName) {
+    return document.getElementsByTagName(tagName);
+  }
+  //闭包缓存数据
+  function getValue() {
+    var value=2;
+    return function () {
+      //每一次点击的时候,都应该改变当前点击按钮的value值
+      this.value="赞("+(value++)+")";
+    }
+  }
+  //获取所有的按钮
+  var btnObjs=my$("input");
+  //循环遍历每个按钮,注册点击事件
+  for(var i=0;i<btnObjs.length;i++){
+    //注册事件
+    btnObjs[i].onclick=getValue();
+  }
+
+
+
+
+//  var btnObjs=my$("input");
+//  var value=1;
+//  //循环遍历每个按钮
+//  for(var i=0;i<btnObjs.length;i++){
+//
+//    //为每个按钮注册点击事件
+//    btnObjs[i].onclick=function () {
+//      console.log("哈哈");
+//      this.value="赞("+(value++)+")";
+//    };
+//  }
+
+    function f1(){
+        var num=parseInt(Math.random()*10+1);
+        return function(){
+            console.log(num);
+        }
+    }
+    var ff=f1();
+    ff();
+    ff();
+    ff();
+
+</script>
+</body>
+</html>

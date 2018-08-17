@@ -1,0 +1,77 @@
+<!DOCTYPE>
+<html>
+    <title>
+        复习
+    </title>
+    <script>
+        /* 
+            创建对象的三种方式
+            1、字面量
+            2、调用系统的构造函数
+            3、自定义构造函数
+
+            原型链主要通过 _proto_ 和 prototype 产生联系
+            原型的指向可以改变，继承：改变原型的指向
+
+            原型作用
+                实现数据共享、继承，节省了内存空间
+                若方法和属性都要共享，则都写在原型中
+        
+            this 的指向
+                普通函数、定时器---》window
+                构造函数+方法+原型----> 实例对象
+
+         */
+    
+        // 字面量创建对象
+        var abc={
+            name:"abc",
+            age:"1000",
+            working:function(){
+                console.log("HTML!");
+            }
+        }
+
+        // 系统构造函数
+        var def=new Object();
+        def.name="def";
+        def.age="110";
+        def.sayHI=function(){
+            console.log(this.name+"I'm "+this.age+"years old !");
+        }
+
+        // 自定义构造函数
+        function Student(name,age,hobby){
+            this.name=name;
+            this.age=age;
+            this.hobby=hobby;
+            this.sayHI=function(){
+                console.log("I'm a student!");
+            }
+        }
+
+        // 继承
+        function Animal(age,sex){
+            this.age=age;
+            this.sex=sex;
+        }
+        Animal.prototype.hobby="小球";
+        Animal.prototype.working=function(){
+            console.log("这就是爱");
+        }
+
+        // 儿子、
+        function Son(age,sex,going){
+            Animal.call(this,age,sex);
+            this.going=going;
+        }
+        Son.prototype=new Animal();
+        var son=new Son("45","nan","tutyu");
+        console.log(son.age);
+        console.log(son.sex);
+        console.log(son.going);
+       son.working();
+
+    
+    </script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html>
+    <title>
+        复习
+    </title>
+    <script>
+       /*  function Person(age,sex) {
+            this.age=age;
+            this.sex=sex;
+        }
+        //通过原型添加方法
+        Person.prototype.sayHi=function (x,y) {
+            console.log("您好啊:"+this.name);   // 此时this 指向 stu.输出“小明”
+            return x+y;                        // name在stu里有,故17行为undefined
+        };
+        var per=new Person(10,"男");
+        per.sayHi();
+
+        console.log("==============");
+        function Student(name,sex) {
+            this.name=name;
+            this.sex=sex;
+        }
+        var stu=new Student("小明","人妖");
+        var r1=per.sayHi.apply(stu,[100,200]);  // 传入的参数还是要按照 person.sayHi 格式
+        var r2=per.sayHi.call(stu,10,20);
+
+        console.log(r1);
+        console.log(r2); */
+
+        function Person(age){
+            this.age=age;
+        }
+        Person.prototype.saying=function(x,y){
+            console.log("结果是："+(x+y)+"年龄是："+this.age);
+        }
+        function Student(age){
+            this.age=age;
+        }
+        var per=new Person(23);
+        var stu=new Student(45);
+
+        per.saying.apply(stu,[10,20]);
+        per.saying.call(stu,[100,200]);
+
+    </script>
+</html>
