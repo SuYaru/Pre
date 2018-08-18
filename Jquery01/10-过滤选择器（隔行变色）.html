@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<ul>
+  <li>我是第1个li</li>
+  <li>我是第2个li</li>
+  <li>我是第3个li</li>
+  <li>我是第4个li</li>
+  <li>我是第5个li</li>
+  <li>我是第6个li</li>
+  <li>我是第7个li</li>
+  <li>我是第8个li</li>
+  <li>我是第9个li</li>
+  <li>我是第10个li</li>
+</ul>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  
+  $(function () {
+    
+    //下标为偶数，过滤
+    $("li:even").css("backgroundColor", "red");
+    $("li:odd").css("backgroundColor", "cyan");
+    $("li:lt(1)").css("fontSize", "32px");
+    
+  });
+  
+</script>
+</body>
+</html>

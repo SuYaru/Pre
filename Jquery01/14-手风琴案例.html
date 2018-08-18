@@ -1,0 +1,76 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    * {padding: 0;margin: 0;}
+    ul { list-style-type: none;}
+    
+    .parentWrap {
+      width: 200px;
+      text-align:center;
+      
+    }
+    
+    .menuGroup {
+      border:1px solid #999;
+      background-color:#e0ecff;
+    }
+    
+    .groupTitle {
+      display:block;
+      height:20px;
+      line-height:20px;
+      font-size: 16px;
+      border-bottom:1px solid #ccc;
+      cursor:pointer;
+    }
+    
+    .menuGroup > div {
+      height: 200px;
+      background-color:#fff;
+      display:none;
+    }
+  
+  </style>
+  
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+      $(function () {
+          //思路分析：
+          //1. 给所有的span注册点击事件，让当前span的兄弟div显示出来
+          $(".groupTitle").click(function () {
+            //下一个兄弟：nextElementSibling
+            
+            //链式编程：在jQuery里面，方法可以一直调用下去。
+            // 200控制下滑/上滑速度  
+            $(this).next().slideDown(200).parent().siblings().children("div").slideUp(200);
+          });
+      });
+  </script>
+</head>
+<body>
+<ul class="parentWrap">
+  <li class="menuGroup">
+    <span class="groupTitle">标题1</span>
+    <div>我是弹出来的div1</div>
+  </li>
+  <li class="menuGroup">
+    <span class="groupTitle">标题2</span>
+    <div>我是弹出来的div2</div>
+  </li>
+  <li class="menuGroup">
+    <span class="groupTitle">标题3</span>
+    <div>我是弹出来的div3</div>
+  </li>
+  <li class="menuGroup">
+    <span class="groupTitle">标题4</span>
+    <div>我是弹出来的div4</div>
+  </li>
+</ul>
+</body>
+</html>

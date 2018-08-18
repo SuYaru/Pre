@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      height: 200px;
+      margin-bottom: 10px;
+      background-color: #a43035;
+      display: none;
+    }
+  </style>
+  <script>
+    
+    //等待页面加载完成后才会执行。
+    window.onload = function () {
+      //不爽的地方：
+      //1. 代码比较麻烦，需要遍历，可能还需要嵌套。
+      //2. 找对象麻烦，方法少，还长
+      //3. 会有兼容性问题。
+      //4. 如果想要实现简单的动画效果 animate
+      //5. js注册事件，会被覆盖，addEventListener
+  
+      var btn1 = document.getElementById("btn1");
+      var btn2 = document.getElementById("btn2");
+      var divs = document.getElementsByTagName("div");
+  
+      btn1.onclick = function () {
+        for (var i = 0; i < divs.length; i++) {
+          divs[i].style.display = "block";
+        }
+      };
+  
+      btn2.onclick = function () {
+        for (var i = 0; i < divs.length; i++) {
+          //低版本火狐浏览器不支持innerText，支持textContent
+          divs[i].innerText = "我是内容";
+        }
+      };
+    };
+  </script>
+</head>
+<body>
+<input type="button" value="展示" id="btn1">
+<input type="button" value="设置内容" id="btn2">
+
+<div></div>
+<div></div>
+<div></div>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<ul>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+  <li><a href="#">我是链接</a></li>
+</ul>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    
+    
+    
+    //index()会返回当前元素在所有兄弟元素里面的索引。
+    $("li").click(function () {
+      console.log($(this).index());
+    });
+    
+    
+  });
+</script>
+
+</body>
+</html>
