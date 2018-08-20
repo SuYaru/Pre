@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    li.basic {
+      background-color: pink;
+      font-size: 32px;
+      color: red;
+    }
+    
+    .bigger {
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+<!-- <input type="buttton" id="btn" value="添加类">
+<div class="aa bb cc dd" id="box"></div> -->
+<input type="button" value="添加basic类" >
+<input type="button" value="添加bigger类">
+<input type="button" value="移除bigger类">
+<input type="button" value="判断bigger类">
+<input type="button" value="切换类">
+<ul>
+  <li class="aa bb cc dd">1</li>
+  <li class="aa bb cc dd">2</li>
+  <li class="aa bb cc dd">3</li>
+  <li class="aa bb cc dd">4</li>
+</ul>
+
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    // js 做法----> 删除cc 类   缺点：若原有类为 aa bb cc dd ee ff ，则会连新增的类一起删掉
+   /*  var  btn=document.getElementById("btn");
+    var div=document.getElementById("box");
+    btn.onclick=function(){
+      div.className="aa bb dd";
+    } */
+
+    $("input").eq(0).click(function () {
+      
+      // 添加一个类   basic 前不加 . 
+      $("li").addClass("basic");
+    });
+  
+    $("input").eq(1).click(function () {
+      $("li").addClass("bigger");
+    });
+    
+    
+    $("input").eq(2).click(function () {
+      
+      //移除一个类
+      $("li").removeClass("bigger");
+    });
+    
+    //判断类
+    $("input").eq(3).click(function () {
+    
+      //移除一个类
+      console.log($("li").hasClass("bigger"));;
+    });
+  
+  
+    $("input").eq(4).click(function () {
+    
+      //判断li有没有basic类，如果有，就移除他，如果没有，添加他
+      //toggle
+      $("li").toggleClass("basic");
+    });
+  });
+</script>
+</body>
+</html>

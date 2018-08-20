@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<ul>
+  <li>高圆圆</li>
+  <li>周二珂</li>
+  <li>冯提莫</li>
+  <li>郑爽</li>
+</ul>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  
+  $(function () {
+    
+    
+    //css(name, value)
+    //修改单个样式
+    //name:样式名 value:样式值
+    /*
+    $("li")
+      .css("backgroundColor", "pink")
+      .css("color", "red")
+      .css("fontSize", "32px"); // 可以写成 font-size ， js 会转成驼峰 最好直接写驼峰
+    */
+    //css(obj)
+    //修改多个样式
+    /*
+    $("li").css({
+      backgroundColor:"pink",
+      color: "red",
+      fontSize:"32px",
+      border: "1px solid black"
+    });
+    */
+    //获取样式
+    //css(name)
+    //name:想要获取的样式
+    $("li").eq(0).css("fontSize", "20px");  // 以下4个都是设置样式
+    $("li").eq(1).css("fontSize", "21px");
+    $("li").eq(2).css("fontSize", "22px");
+    $("li").eq(3).css("fontSize", "23px");
+    
+    //A:20  b:21  c:22   d:23  e:16  f:[20, 21, 22, 23]
+    
+    
+    //隐式迭代：
+      // 设置操作的时候：会给jq内部的所有对象都设置上相同的值。
+      // 获取的时候：只会返回第一个元素对应的值。
+      // 默认所有的元素都是相同的效果，故只获取第一个元素的样式
+    console.log($("li").css("fontSize"));//16px
+  
+  
+  });
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+<!--<a href="http://web.itcast.cn" target="_blank">传智大前端</a>-->
+<div id="box"></div>
+
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+//    var box = document.getElementById("box");
+//
+//    var a = document.createElement("a");
+//    box.appendChild(a);
+//    a.setAttribute("href", "http://web.itcast.cn");
+//    a.setAttribute("target", "_blank");
+//    a.innerHTML = "传智大前端";
+    var $li=$('<a href="http://web.itcast.cn" target="_blank">传智大前端</a>');
+    $("#box").append('<a href="http://web.itcast.cn" target="_blank">传智大前端</a>');
+    
+  });
+</script>
+</body>
+</html>

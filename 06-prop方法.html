@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<input type="button" value="选中">
+<input type="button" value="不选中">
+<input type="checkbox" id="ck">
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  
+  
+  //对于布尔类型的属性，不要attr方法，应该用prop方法 prop用法跟attr方法一样。
+  $(function () {
+    $("input").eq(0).click(function () {
+      $("#ck").prop("checked", true);
+    });
+  
+    $("input").eq(1).click(function () {
+      $("#ck").prop("checked", false);
+    });
+  });
+</script>
+
+
+</body>
+</html>

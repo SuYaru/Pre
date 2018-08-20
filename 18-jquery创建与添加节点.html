@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box">
+  我是内容
+</div>
+
+<p>我是外面的p元素</p>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    
+    
+//    //创建jq对象
+      var $li = $('<a href="http://web.itcast.cn" target="_blank">传智大前端</a>');
+//    console.log($li);
+//
+//
+//    $("div").append('<a href="http://web.itcast.cn" target="_blank">传智大前端</a>');
+    
+    //添加到子元素的最后面,第二个元素用的更多
+    //$("div").append($("p"));
+    $li.appendTo($("div"));
+    
+    //$("div").prepend($("p"));
+    //$("p").prependTo($("div"));
+    
+    // 添加到 div 之后或之后，作为兄弟元素
+//    $('div').after($("p")); 
+//    $('div').before($("p"));
+    
+    
+  });
+</script>
+
+</body>
+</html>
