@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<a href="http://web.itcast.cn" id="link">呵呵</a>
+
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    
+    $("#link").on("click", function (e) {
+      
+      //阻止 默认
+      //e.preventDefault();   1)  阻止跳转
+      //e.stopPropagation();  2） 阻止冒泡  可以不管兼容性
+
+      //alert("呵呵");
+      //return false;     //  3） 既能阻止事件冒泡，也能阻止浏览器的默认行为。 
+      //console.log(e.cancelBubble);
+      //alert("呵呵");
+    });
+    
+    $("body").on("click", function () {
+      alert("嘻嘻");
+    })
+    
+  });
+</script>
+</body>
+</html>

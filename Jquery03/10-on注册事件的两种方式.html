@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="增加" id="btn">
+<div>
+  <p>111111</p>
+  <p>111111</p>
+  <p>111111</p>
+  <p>111111</p>
+</div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    
+    
+    // 这个是p自己注册的事件（简单事件）
+    /*$("p").on("click", function () {
+      alert("呵呵");
+    });*/
+    
+    
+    $("div").on("click", "p", function () {
+      alert("呵呵")
+    });
+    
+    
+    $("#btn").on("click", function () {
+      $("<p>我是新建的p元素</p>").appendTo("div");
+    });
+    
+    
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div>这是一个div</div>
+
+<p>这是一个p元素</p>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    
+    //100，注册的时候的时候，把100传到事件里面去。
+    var money = 100;
+    // 在data 处的值放入money
+    /* $("div").on("click",money, function (e) {
+      console.log(money);     // 此时的money 还是外部的money ，不是传入的实参 money
+    }); */
+
+    //on(types, selector, data, callback)
+    //使用on方法的时候，可以给data参数传一个值，可以在事件里面通过e.data获取到。
+    $("div").on("click",100, function (e) {
+      console.log(e);
+      console.log("哈哈，我有"+e.data);
+    });
+    
+    money = 0;
+    $("p").on("click", function () {
+      console.log("呜呜，我有"+0);
+    })
+    
+  });
+</script>
+</body>
+</html>

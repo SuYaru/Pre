@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div><h3>我是标题</h3></div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    
+    //html:innerHTML  text:innerText  不传参数是获取
+    //console.log($("div").html());//<h3>我是标题</h3>
+    //console.log($("div").text());//我是标题
+    
+    //  <p>作为标签显示
+    //$("div").html("<p>我是文本</p>");
+
+    //  <p>作为文本内容显示
+    $("div").text("<p>我是文本</p>");
+    
+  });
+</script>
+
+</body>
+</html>

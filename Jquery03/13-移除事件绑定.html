@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="触发" id="btn">
+<p>我是一个p元素</p>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    
+    /* $("p").on("click mouseenter", function () {
+      console.log("呵呵");
+    }) */
+
+    // $("p").off(); // 里面不写事件，则该标签的所有事件被移除
+    //$("p").off("mouseenter");
+    $("p").on("click", function () {
+      console.log("呵呵");
+    })
+    //toggle：切换  trigger：触发
+    $("#btn").on("click",function () {
+      //触发p元素的点击事件
+      //$("p").click();     // 这个方法比较早
+      //$("p").trigger("click");
+    });
+    
+    
+  });
+</script>
+</body>
+</html>

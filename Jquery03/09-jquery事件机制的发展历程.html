@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #box {
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<!--点击按钮，在div里面创建一个新的p元素-->
+<input type="button" value="按钮" id="btn">
+
+<div id="box">
+  <div>
+    <span>呵呵</span>
+    <p>11111</p>
+    <p>22222</p>
+    <p>33333</p>
+    <p>44444</p>
+  </div>
+</div>
+
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  //$("div").children("p").click(function(){})
+  
+  
+  
+  $(function () {
+    
+   
+//
+    //bind方式bind 绑定
+//    $("p").bind({
+//      click:function () {
+//        alert("呵呵")
+//      },
+//      mouseenter:function () {
+//        alert("哈哈")
+//      }
+//    });
+  // 绑定两个相同的事件
+   /*  $("p").bind("click mouseenter",function(){
+      console.log("这里是P ");
+    }); */
+    
+    
+     //注册简单事件，缺点：一次只能注册一个事件
+//    $("p").click(function () {
+//      alert("呵呵");
+//    });
+
+      // 不论新建的元素在 p 标签函数之后，还是p 标签函数之前
+      // 新建的p 标签都没有 标签函数
+      // 因为页面加载时，p 标签函数 只识别到已有的4个 p 标签
+    /* $("#btn").click(function () {
+      $("<p>我是新增加的p元素</p>").appendTo("div");
+    }); */
+  
+    
+    //简单事件，给自己注册的事件
+//    $("div").click(function () {
+//      alert("哈哈");
+//    });
+    
+    //delegate:代理，委托
+    //1. 给父元素注册委托事件，最终还是有子元素来执行。
+    // 
+    
+    //要给div注册一个委托事件,但是最终不是由父元素执行，而是由子元素p执行
+    //第一个参数：selector:事件最终由谁来执行。
+    //第二个参数：事件的类型
+    //第三个参数：函数，要做什么
+    
+    //1. 动态创建的也能有事件 :
+    // 缺点：delegate只能注册委托事件
+    // 优点：若有n 个子元素需要注册事件，则只需注册一个事件----> 节省内存空间
+    // 给 p 元素没有事件，冒泡上去给 div ，div 看点的元素是不是p
+    // 若是p 元素，则让p 元素执行事件
+    // 所以会给新增的元素有事件
+    // 也就是 不给子元素绑定事件，而是在父元素注册事件
+    // 当父元素判断是该子元素时，则执行该事件
+
+    $("#box").delegate("p", "click", function () {
+      //alert("呵呵");
+      console.log(this);
+    });
+    
+    
+    
+    
+   
+  });
+</script>
+
+</body>
+</html>

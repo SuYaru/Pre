@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      height: 4000px;
+      width: 4000px;
+    }
+  </style>
+</head>
+<body>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    // 使用更简单，也不用担心兼容性
+    // scrollTop()是文档被浏览器顶部档住的部分
+    $(window).scroll(function () {
+      console.log("————&："+$(window).scrollTop());
+      console.log($(window).scrollLeft());
+    });
+    
+  });
+</script>
+
+</body>
+</html>

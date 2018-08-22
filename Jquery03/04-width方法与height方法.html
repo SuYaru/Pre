@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      padding: 10px;
+      border: 10px solid #000;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+<div></div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    // css 三大家族： offset scroll  client 
+    //获取div的宽度
+    //console.log($("div").css("width"));
+    //$("div").css("width", "400px");
+    
+    //直接获取到的是数字
+    //就是获取的width的值
+    console.log($("div").width());//width
+    //console.log($("div").innerWidth());//padding+width
+    //console.log($("div").outerWidth());//padding+width+border
+    //console.log($("div").outerWidth(true));//padding+width+border+margin
+    //$("div").width(400);
+    
+    
+    //需要获取页面可视区的宽度和高度
+//    $(window).resize(function () {
+//      console.log($(window).width());
+//      console.log($(window).height());
+//    });
+  
+  });
+</script>
+</body>
+</html>

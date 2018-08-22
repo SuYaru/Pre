@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    .main {
+      margin: 10px auto 0;
+      width: 1000px;
+    }
+    
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+  
+  <script src="../jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      // document window 都不加 "" 
+      $(window).scroll(function () {
+        //判断卷去的高度超过topPart的高度
+        //1. 让navBar有固定定位
+        //2. 让mainPart有一个marginTop
+        console.log($(this).scrollTop());
+        if($(window).scrollTop() >= $(".top").height() ){
+          $(".nav").addClass("fixed");
+           // 因为nav 有一段周边是白色的，所以要有一定的距离
+          $(".main").css("marginTop", $(".nav").height() + 10);
+        }else {
+          $(".nav").removeClass("fixed");
+          $(".main").css("marginTop", 10);
+        }
+        
+      });
+      
+    });
+  </script>
+
+</head>
+<body>
+<div class="top" id="topPart">
+  <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+  <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+  <img src="images/main.png" alt=""/>
+</div>
+</body>
+</html>

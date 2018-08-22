@@ -1,0 +1,365 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>itcastmark:C:\Users\HUCC\Desktop\笔记\笔记</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="jquery-">jQuery特殊属性操作</h1>
+<h2 id="val-">val方法</h2>
+<blockquote>
+<p>val方法用于设置和获取表单元素的值，例如input、textarea的值</p>
+</blockquote>
+<pre><code class="lang-javascript">//设置值
+$(&quot;#name&quot;).val(“张三”);
+//获取值
+$(&quot;#name&quot;).val();
+</code></pre>
+<p>【案例：京东搜索.html】</p>
+<h2 id="html-text-">html方法与text方法</h2>
+<blockquote>
+<p>html方法相当于innerHTML  text方法相当于innerText</p>
+</blockquote>
+<pre><code class="lang-javascript">//设置内容
+$(“div”).html(“&lt;span&gt;这是一段内容&lt;/span&gt;”);
+//获取内容
+$(“div”).html()
+
+//设置内容
+$(“div”).text(“&lt;span&gt;这是一段内容&lt;/span&gt;”);
+//获取内容
+$(“div”).text()
+</code></pre>
+<p>区别：html方法会识别html标签，text方法会那内容直接当成字符串，并不会识别html标签。</p>
+<h2 id="width-height-">width方法与height方法</h2>
+<blockquote>
+<p>设置或者获取高度</p>
+</blockquote>
+<pre><code class="lang-javascript">//带参数表示设置高度
+$(“img”).height(200);
+//不带参数获取高度
+$(“img”).height();
+</code></pre>
+<p>获取网页的可视区宽高</p>
+<pre><code class="lang-javascript">//获取可视区宽度
+$(window).width();
+//获取可视区高度
+$(window).height();
+// css 三大家族： offset scroll  client 
+//console.log($(&quot;div&quot;).innerWidth());//padding+width
+//console.log($(&quot;div&quot;).outerWidth());//padding+width+border
+//console.log($(&quot;div&quot;).outerWidth(true));//padding+width+border+margin
+</code>
+</pre>
+<h2 id="scrolltop-scrollleft">scrollTop与scrollLeft</h2>
+<blockquote>
+<p>设置或者获取垂直滚动条的位置</p>
+</blockquote>
+<pre><code class="lang-javascript">//获取页面被卷曲的高度
+$(window).scrollTop();
+//获取页面被卷曲的宽度
+$(window).scrollLeft();
+</code></pre>
+<p>【案例：仿腾讯固定菜单栏案例】
+【案例：小火箭返航案例】</p>
+<h2 id="offset-position-">offset方法与position方法</h2>
+<blockquote>
+<p>offset方法获取元素距离document的位置，position方法获取的是元素距离有定位的父元素的位置。</p>
+</blockquote>
+<pre><code class="lang-javascript">//获取元素距离document的位置,返回值为对象：{left:100, top:100}
+$(selector).offset();
+//获取相对于其最近的有定位的父元素的位置。
+$(selector).position();
+</code></pre>
+<h1 id="jquery-">jQuery事件机制</h1>
+<blockquote>
+<p>JavaScript中已经学习过了事件，但是jQuery对JavaScript事件进行了封装，增加并扩展了事件处理机制。jQuery不仅提供了更加优雅的事件处理语法，而且极大的增强了事件的处理能力。</p>
+</blockquote>
+<h2 id="jquery-">jQuery事件发展历程(了解)</h2>
+<p>简单事件绑定&gt;&gt;bind事件绑定&gt;&gt;delegate事件绑定&gt;&gt;on事件绑定(推荐)</p>
+<blockquote>
+<p>第一阶段：简单事件注册</p>
+<pre><code class="lang-javascript">click(handler)            单击事件
+mouseenter(handler)        鼠标进入事件
+mouseleave(handler)        鼠标离开事件
+</code>
+</pre>
+<p>缺点：不能同时注册多个事件</p>
+<p>第二阶段：bind方式注册事件</p>
+</blockquote>
+<pre><code class="lang-javascript">//第一个参数：事件类型
+//第二个参数：事件处理程序
+//bind 两个事件绑定同一个回调函数
+$(&quot;p&quot;).bind(&quot;click mouseenter&quot;, function(){
+    //事件响应方法
+});
+//bind 分别绑定两个事件
+   $(&quot;p&quot;).bind({
+     click:function () {
+       alert("呵呵")
+     },
+     mouseenter:function () {
+       alert("哈哈")
+     }
+   });
+</code></pre>
+<p>缺点：不支持动态事件绑定</p>
+<blockquote>
+<p>第三阶段：delegate注册委托事件</p>
+<p>给父元素注册委托事件，最终还是由子元素来执行。</p>
+<p>执行过程：子元素没有事件，冒泡上去给父元素</p>
+<p>当父元素判断是该子元素时，且为对应的事件，则执行对应的函数。</p>
+</blockquote>
+<pre><code class="lang-javascript">// 第一个参数：selector，要绑定事件的元素
+// 第二个参数：事件类型
+// 第三个参数：事件处理函数
+$(&quot;.parentBox&quot;).delegate(&quot;p&quot;, &quot;click&quot;, function(){
+    //为 .parentBox下面的所有的p标签绑定事件
+});
+</code></pre>
+<p>缺点：只能注册委托事件，因此注册时间需要记得方法太多了</p>
+<p>优点：若有n 个子元素需要注册事件，则只需注册一个事件----> 节省内存空间</p>
+<blockquote>
+<p>第四阶段：on注册事件</p>
+</blockquote>
+<h2 id="on-">on注册事件(重点)</h2>
+<blockquote>
+<p>jQuery1.7之后，jQuery用on统一了所有事件的处理方法。</p>
+<p>最现代的方式，兼容zepto(移动端类似jQuery的一个库)，强烈建议使用。</p>
+</blockquote>
+<p>on注册简单事件</p>
+<pre><code class="lang-javascript">// 表示给$(selector)绑定事件，并且由自己触发，不支持动态绑定。
+$(selector).on( &quot;click&quot;, function() {});
+</code></pre>
+<p>on注册委托事件</p>
+<pre><code class="lang-javascript">// 表示给$(selector)绑定代理事件，当必须是它的内部元素span才能触发这个事件，支持动态绑定
+$(selector).on( &quot;click&quot;,“span”, function() {});
+</code></pre>
+<p>on注册事件的语法：</p>
+<pre><code class="lang-javascript">// 第一个参数：events，绑定事件的名称可以是由空格分隔的多个事件（标准事件或者自定义事件）
+// 第二个参数：selector, 执行事件的后代元素（可选），如果没有后代元素，那么事件将有自己执行。
+// 第三个参数：data，传递给处理函数的数据，事件触发的时候通过event.data来使用（不常使用）
+// 第四个参数：handler，事件处理函数
+$(selector).on(events[,selector][,data],handler);
+</code></pre>
+<p>补充：事件的执行顺序：委托事件>自己的注册事件</p>
+<h2 id="-">事件解绑</h2>
+<blockquote>
+<p>unbind方式（不用）</p>
+</blockquote>
+<pre><code class="lang-javascript">$(selector).unbind(); //解绑所有的事件
+$(selector).unbind(&quot;click&quot;); //解绑指定的事件
+</code></pre>
+<blockquote>
+<p>undelegate方式（不用）</p>
+</blockquote>
+<pre><code class="lang-javascript">$( selector ).undelegate(); //解绑所有的delegate事件
+$( selector).undelegate( “click” ); //解绑所有的click事件
+</code></pre>
+<blockquote>
+<p>off方式（推荐）</p>
+</blockquote>
+<pre><code class="lang-javascript">// 解绑匹配元素的所有事件
+$(selector).off();
+// 解绑匹配元素的所有click事件
+$(selector).off(&quot;click&quot;);
+</code></pre>
+<h2 id="-">触发事件</h2>
+<pre><code class=&quot;lang-javascript&quot;>
+$(&quot;p&quot;).on(&quot;click&quot;, function () {
+    console.log(&quot;呵呵&quot;);
+})
+//toggle：切换  trigger：触发
+$(&quot;#btn&quot;).on(&quot;click&quot;,function () {
+  //触发p元素的点击事件
+  $(&quot;p&quot;).click();     			// 这个方法比较早
+  $(&quot;p&quot;).trigger(&quot;click&quot;);		// 触发p元素的点击事件
+});	
+</code></pre>
+<h2 id="jquery-">jQuery事件对象</h2>
+<p>jQuery事件对象其实就是js事件对象的一个封装，处理了兼容性。</p>
+<pre><code class="lang-javascript">//screenX和screenY    对应屏幕最左上角的值
+//clientX和clientY    距离页面左上角的位置（忽视滚动条）
+//pageX和pageY    距离页面最顶部的左上角的位置（会计算滚动条的距离）
+
+//event.keyCode    按下的键盘代码
+//event.data    存储绑定事件时传递的附加数据
+
+//event.stopPropagation()    阻止事件冒泡行为
+//event.preventDefault()    阻止浏览器默认行为
+//return false:既能阻止事件冒泡，又能阻止浏览器默认行为。
+
+//100，注册的时候的时候，把100传到事件里面去。
+    var money = 100;
+    // 在data 处的值放入money
+    $("div").on("click",money, function (e) {
+      console.log(money);     // 此时的money 还是外部的money ，不是传入的实参 money
+    });
+
+    //on(types, selector, data, callback)
+    //使用on方法的时候，可以给data参数传一个值，可以在事件里面通过e.data获取到。
+    $("div").on("click",100, function (e) {
+      console.log(e);
+      console.log("哈哈，我有"+e.data);
+    });
+    
+    money = 0;
+    $("p").on("click", function () {
+      console.log("呜呜，我有"+0);
+    })
+</code></pre>
+<p>【案例：钢琴版导航（加强）.html】</p>
+<h1 id="jquery-">jQuery补充知识点</h1>
+<h2 id="-">链式编程</h2>
+<blockquote>
+<p>通常情况下，只有设置操作才能把链式编程延续下去。因为获取操作的时候，会返回获取到的相应的值，无法返回 jQuery对象。</p>
+<p>五角星案例中，end()会重新指向$(this)对象</p>
+</blockquote>
+<pre><code class="lang-javascript">end(); // 筛选选择器会改变jQuery对象的DOM对象，想要回复到上一次的状态，并且返回匹配元素之前的状态。
+$(function () {
+      //1. 给li注册鼠标经过事件，让自己和前面所有的兄弟都变成实心
+      var wjx_k = "☆";
+      var wjx_s = "★";
+      $(".comment>li").on("mouseenter", function () {
+        //  $(this).text(wjx_s).prevAll().text(wjx_s).nextAll().text(wjx_k)
+        //  如果是上者，preAll()指向前n 个元素，nextAll()会从后往前填充空心
+        //  这样每次第一个五角星后的全部星星，都会是空心
+        //  $(this).text(wjx_s).prevAll().text(wjx_s);
+        //  $(this).nextAll().text(wjx_k);
+
+        // 此时 end() 重新指向 this[当前点击的 li ]
+        $(this).text(wjx_s).prevAll().text(wjx_s).end().nextAll().text("☆");
+      });
+      
+      //2. 给ul注册鼠标离开时间，让所有的li都变成空心
+      $(".comment").on("mouseleave", function () {
+        $(this).children().text(wjx_k);
+        
+        //再做一件事件，找到current，让current和current前面的变成实心就行。
+        $("li.current").text(wjx_s).prevAll().text(wjx_s);
+      });
+      
+      //3. 给li注册点击事件
+      $(".comment>li").on("click", function () {
+        $(this).addClass("current").siblings().removeClass("current");
+      }); 
+});
+</code></pre>
+<p>【案例：五角星评分案例.html】</p>
+<h2 id="each-">each方法</h2>
+<blockquote>
+<p>jQuery的隐式迭代会对所有的DOM对象设置相同的值，但是如果我们需要给每一个对象设置不同的值的时候，就需要自己进行迭代了。</p>
+</blockquote>
+<p>作用：遍历jQuery对象集合，为每个匹配的元素执行一个函数</p>
+<pre><code class="lang-javascript">// 参数一表示当前元素在所有匹配元素中的索引号
+// 参数二表示当前元素（DOM对象）
+$(selector).each(function(index,element){});
+</code></pre>
+<p>【案例：不同的透明度.html】</p>
+<h2 id="-">多库共存</h2>
+<blockquote>
+<p>jQuery使用$作为标示符，但是如果与其他框架中的$冲突时，jQuery可以释放$符的控制权.</p>
+</blockquote>
+<pre><code class="lang-javascript">var c = $.noConflict();//释放$的控制权,并且把$的能力给了c
+</code></pre>
+<h2 id="-">delay()</h2>
+<blockquote>
+<p>在显示和消失效果之间停留</p>
+</blockquote>
+<pre><code class="lang-javascript">
+$("div").fadeIn(1000).delay(2000).fadeOut(1000);
+</code></pre>
+<h2 id="-">解决$冲突</h2>
+<blockquote>
+<p>jQuery的常用符号$，如果与其他框架或者其他对象冲突，则可重新指定一个符号代替$的作用</p>
+<p>方法：noConflict()</p>
+</blockquote>
+<pre><code class="lang-javascript">
+ var c=$.noConflict();		// 用c 代替$ 起作用
+    
+    jQuery(function () {	// 当然也可以直接用 jQuery代替$
+      
+    });
+</code></pre>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
