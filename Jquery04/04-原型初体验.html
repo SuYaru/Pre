@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+
+  //var arr = new Array();
+  //console.log(arr);
+
+  //给数组的原型增加了一个方法，sayHi的方法
+//  Array.prototype.sayHi = function () {
+//    console.log("呵呵");
+//  }
+//
+//
+//
+//  var arr = new Array();
+//
+//  arr.sayHi();
+
+
+
+  //jquery插件的实质，就是给jquery的原型上增加方法。
+
+  //$.fn  ==== jQuery.prototype
+  $.fn.sayHi = function () {
+      console.log("呵呵");
+  }
+
+  $(document).sayHi();
+
+
+</script>
+
+</body>
+</html>

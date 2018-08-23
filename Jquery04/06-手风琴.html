@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    div {
+      width: 1200px;
+      height: 400px;
+      border: 2px solid #000;
+      margin: 100px auto;
+    }
+    
+    li {
+      width: 240px;
+      height: 400px;
+      float: left;
+    }
+
+    /* li:nth-child(1) {
+      background-image: url(images/1.jpg);
+    }
+
+    li:nth-child(2) {
+      background-image: url(images/2.jpg);
+    }
+
+    li:nth-child(3) {
+      background-image: url(images/3.jpg);
+    }
+
+    li:nth-child(4) {
+      background-image: url(images/4.jpg);
+    }
+
+    li:nth-child(5) {
+      background-image: url(images/5.jpg);
+    } */
+  </style>
+</head>
+<body>
+
+<div id="box">
+
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+</div>
+
+<script src="jquery-1.12.4.js"></script>
+<!-- <script src="jquery.accordion.js"></script> -->
+<script>
+
+  $(function () {
+    // 在原型中设置方法
+    var colors=["green","red","blue","yellow","pink"];
+    $.fn.accordion=function(colors,width){
+      // 谁调用了,this 指向谁
+      // 指向box 下面的 li
+      var $li=this.find("li");
+
+      // 根据 width设定不同列的宽度
+      var boxLength=this.width();
+      var maxLength=boxLength-($li.length-1)*width;
+      var average=boxLength/$li.length;
+
+      // 设置li 的背景图片
+      $li.each(function(i,e){
+        $(e).css("backgroundColor",colors[i]);
+      });
+
+      // 设置 li 划过时的宽度
+      $li.on("mouseenter",function(){
+        $(this).stop().animate({width:maxLength}).siblings().stop().animate({width:width});
+      });
+
+      $li.on("mouseleave",function(){
+         //这里不能用$(this)，否则只有自己为平均宽度 其他都是width 右边会出现大片空白
+        $li.stop().animate({width:average}); 
+      });
+
+
+    }
+    $("#box").accordion(colors,50);
+
+  });
+
+
+</script>
+
+</body>
+</html>

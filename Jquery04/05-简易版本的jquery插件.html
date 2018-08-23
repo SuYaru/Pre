@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<div></div>
+<p>1234</p>
+
+
+<script src="jquery-1.12.4.js"></script>
+<script src="jquery.bgColor.js"></script>
+<script>
+
+  $(function () {
+    $.fn.bkColor=function(color){
+      this.css("backgroundColor",color);
+      return this;
+    }
+    $("div").bkColor("red").width(600);
+    $("p").bkColor("green");
+  });
+
+</script>
+
+</body>
+</html>

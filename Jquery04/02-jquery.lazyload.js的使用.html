@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      height: 4000px;
+    }
+  </style>
+</head>
+<body>
+<div></div>
+<img class="lazy" data-original="02.gif" alt="">
+
+<!-- Js 引入文件，最好在 /body 之前，这样会使页面先显示，不会有一段时间的空白  -->
+<!-- 也可以放在 </html> 之后，但是系统会自动放到 </body> 之前 -->
+<!-- 引入的插件，一般都在 JQuery  之后，它们大多会基于 JQuery 具体先看下说明文档 -->
+<script src="jquery-1.12.4.js" type="text/javascript"></script>
+<script src="jquery.lazyload.js" type="text/javascript"></script>
+
+<!-- 懒加载： 设定一个类 class="lazy"  data-original="图片路径" -->
+<!-- 调用： $(" ").lazyload();-->
+<!-- 文档加载到图片时，没有src 属性，不会加载图片，只有当下拉到该图片时，才加载 -->
+<!-- 当页面很长时，这个很有用 -->
+<script>
+  
+  $(function () {
+  
+    $("img.lazy").lazyload();
+  
+  });
+  
+</script>
+</body>
+</html>

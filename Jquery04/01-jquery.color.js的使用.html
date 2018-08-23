@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 400px;
+      height: 400px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div></div>
+
+<!--1. 引入jquery的js文件-->
+<script src="jquery-1.12.4.js"></script>
+<!--2. 引入插件的js文件-->
+<script src="jquery.color.js"></script>
+<!-- <script src="jquery.color.svg-names.js"></script> -->
+<script>
+  $(function () {
+  
+    //3. 直接使用即可。
+    //说明jquery不支持颜色的渐变,颜色最好用16进制
+    $('div').animate({backgroundColor:"#f0ffff"}, 3000, function () {
+        alert("呵呵");
+    });
+  
+  });
+</script>
+</body>
+</html>
