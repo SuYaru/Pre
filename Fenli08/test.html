@@ -1,0 +1,45 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+	p{ width:12em; border:1px dashed #F00;}
+	.hyphenate{ word-break:hyphenate;}
+	.break-all{ word-break:break-all;}
+	.break-strict{ word-break:break-strict;}
+	.keep-all{word-break:keep-all;}
+	.loose{ word-break:loose;}
+	.normal{ word-break:normal}
+</style>
+<title>无标题文档</title>
+</head>
+ 
+<body>
+ 
+<p class="hyphenate">
+	这个是word-break:hyphenate;的效果。<br />
+    1234567890 1234567890 1234567890 1234567890 1234567890，1234567890。1234567890，1234567890,1234567890 1234567890
+</p>
+<p class=" break-all">
+	这个是word-brea:kbreak-all;的效果。<br />
+     1234567890 1234567890 1234567890 1234567890 1234567890，1234567890。1234567890，1234567890,1234567890 1234567890
+</p>
+<p class=" break-strict">
+	这个是word-brea:break-strict;的效果。只在空格和中文逗号、句号 换行<br />
+    1234567890 1234567890 1234567890 1234567890 1234567890 1234567890,1234567890。1234567890,1234567890 1234567890
+</p>
+<p class="keep-all">
+	这个是word-brea:keep-all;的效果。 只能在半角空格或连字符处换行。半角空格/ 中文逗号句号如果到了行末，则换行<br /> 
+    1234567890- 1234567890-1234567890 1234567890 1234567890，1234567890，1234567890，1234567890。1234567890 1234567890
+</p>
+<p class=" loose">
+	这个是word-break:loose;的效果 。空格换行<br /> 
+    1234567890 1234567890 1234567890 1234567890 1234567890，1234567890．1234567890.1234567890.1234567890 1234567890
+</p>
+<p class=" normal">
+	这个是word-brea:normal;的效果 。空格换行<br />
+    1234567890 1234567890 1234567890 1234567890 1234567890,1234567890.1234567890，1234567890.1234567890 1234567890
+</p>
+</body>
+</html>

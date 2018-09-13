@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jane Shopping</title>
+    <!-- 这个一定要加，否则无法识别为 css ：type="text/css" -->
+    <link rel="stylesheet" href="styles/detail.css" type="text/css">
+    <link rel="stylesheet" href="styles/index.css" type="text/css">
+    <link rel="stylesheet" href="styles/main.css" type="text/css">  <!-- 包含 base header nav -->
+    <link rel="stylesheet" href="styles/thickbox.css" type="text/css">
+    <script src="scripts/jquery-1.3.1.js"></script>
+    <script src="scripts/jquery.jqzoom.js"></script>
+    <!-- 避免 后来动态添加的 对象并没有绑定事件：采用 在 livequery 下绑定一个 click 事件，达到动态绑定效果-->
+    <script src="scripts/jquery.livequery.js"></script> 
+    <!-- 左侧图片放大镜效果 -->
+    <script src="scripts/use_jqzoom.js"></script>
+    <!-- thickbox 效果 -->
+    <script src="scripts/jquery.thickbox.js" type="text/javascript"></script>
+    <!-- 单机左侧小图片，切换为大图片 -->
+    <script src="scripts/switchImg.js"></script>
+    <!-- 切换属性选项卡 -->
+    <script src="scripts/tab.js"></script>
+    <!-- 右侧颜色切换 -->
+    <script src="scripts/switchColor.js"></script>
+    <!-- 右侧产品切换、产品数量和价格联动 -->
+    <script src="scripts/sizeAndprice.js"></script>
+    <!--右侧产品评分  -->
+   <script src="scripts/star.js"></script>
+   <!-- 最终提示用户购买 -->
+   <script src="scripts/finish.js"></script>
+</head>
+<body>
+    <div id="header">
+        <a  id="logo" href="#">Jane Shopping</a>
+        <ul id="skin">
+            <li id="skin_0" title="蓝色" class="selected">蓝色</li>
+            <li id="skin_1" title="紫色">紫色</li>
+            <li id="skin_2" title="红色">红色</li>
+            <li id="skin_3" title="天蓝色">天蓝色</li>
+            <li id="skin_4" title="橙色">橙色</li>
+            <li id="skin_5" title="淡绿色">淡绿色</li>
+        </ul>
+    </div>
+    <div id="navigation">
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="#">衬衫</a>
+                <ul>
+                    <li><a href="#">短袖衬衫</a></li>
+                    <li><a href="#">长袖衬衫</a></li>
+                    <li><a href="#">无袖衬衫</a></li>
+                </ul>
+            </li>
+            <li><a href="#">卫衣</a>
+                <ul>
+                    <li><a href="#">开襟卫衣</a></li>
+                    <li><a href="#">套头卫衣</a></li>
+                </ul>
+            </li>
+            <li><a href="#">裤子</a>
+                <ul>
+                    <li><a href="#">休闲裤</a></li>
+                    <li><a href="#">卡其裤裤</a></li>
+                    <li><a href="#">牛仔裤裤</a></li>
+                    <li><a href="#">短裤</a></li>
+                </ul>
+            </li>
+            <li><a href="#">联系我们</a></li>
+        </ul>
+    </div>
+    <div id="content" class="global_module">
+        <h3>商品信息</h3>
+        <div class="pro_detail">
+            <div class="pro_detail_left">
+                <div class="jqzoom">
+                    <img src="images/pro_img/blue_one_small.jpg" jqimg="images/pro_img/blue_one_big.jpg" alt="" id="bigImg" />
+                </div>
+                <span>
+                    <a href="images/pro_img/blue_one_big.jpg" id="thickImg" title="介绍文字" class="thickbox">
+                        <img src="images/look.gif" alt="单机看大图">
+                    </a>
+                </span>
+                <ul class="imgList">
+                    <li><img src="images/pro_img/blue_one.jpg" alt=""></li>
+                    <li><img src="images/pro_img/blue_two.jpg" alt=""></li>
+                    <li><img src="images/pro_img/blue_three.jpg" alt=""></li>
+                </ul>
+                <div class="tab">
+                    <div class="tab_menu">
+                        <ul>
+                            <li class="selected">产品属性</li>  
+                            <li>产品码表</li>
+                            <li>产品介绍</li>
+                        </ul>
+                    </div>
+                    <div class="tab_box">
+                        <div >我们的产品是源自澳洲纯正棉毛，质量上乘，品质优良，经过多道工序加工，经欧洲设计师设计，舒适美观</div>
+                        <div class="hide">xl、L、M码均现货发售</div>
+                        <div class="hide">正宗澳洲羊毛</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pro_detail_right">
+                <h4>免烫高质条纹衬衣</h4>
+                <span>全新精品高质棉衬衫再次提升品质。
+                给对方和福克斯斯蒂芬加快速度分隔开上发光开始就的规范化工开会更好看过水电费光华科技闪电发货
+                爱神的箭后即可持续性差温柔离婚卡是防守对方我去问问他二胎我让他尔特
+                让他发鬼地方个挨打的发的斯蒂芬线程V型从而儿童尔特让他目标新农村VB麦序吧啊按时发
+                千万人图图沃尔沃额日益在是没你爸妈你付款权威哦全文区文化局看全文 驱蚊器二区委区为
+                阿斯达奥多四大端口号按时就爱上的痕迹暗杀数据库大的家
+                </span>
+                <p><strong>现价：200元 原价 ：<del>300元</del></strong></p>
+                <p><strong>编号：333139993</strong></p>
+                <div class="color_change">
+                    <p>颜色：<strong>蓝白</strong></p>
+                    <ul>
+                        <li><img src="images/pro_img/blue.jpg" alt="蓝色"></li>
+                        <li><img src="images/pro_img/green.jpg" alt="绿色"></li>
+                        <li><img src="images/pro_img/yellow.jpg" alt="黄色"></li>
+                    </ul>
+                </div>
+                <div class="pro_size">
+                    <span>尺寸：</span>
+                    <strong>未选择</strong>
+                    <ul>
+                        <li><span>S</span></li>
+                        <li><span>L</span></li>
+                        <li><span>SL</span></li>
+                        <li><span>LL</span></li>
+                    </ul>
+                </div>
+                <div class="pro_num">
+                    数量：
+                    <select name="" id="num_sort">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                    </select>
+                </div>
+                <div class="pro_price">
+                    总计：<span>200</span>元
+                </div>
+                <div class="pro_rating">
+                    给商品评分：
+                    <ul class="rating">
+                        <!-- 在 rating 类之外，更换其余6个类，自动在 css 样式中将背景图向下移动，达到变换的目的 -->
+                        <li class="no"><a href="" title="0星"></a></li>
+                        <li class="one"><a href="" title="1星"></a></li>
+                        <li class="two"><a href="" title="2星"></a></li>
+                        <li class="three"><a href="" title="3星"></a></li>
+                        <li class="four"><a href="" title="4星"></a></li>
+                        <li class="five"><a href="" title="5星"></a></li>
+                    </ul>
+                </div>
+                <div id="cart">
+                    <a href="#"><img src="images/btn_cart.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

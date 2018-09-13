@@ -1,0 +1,38 @@
+* {     /* 通配符，在不同浏览器都不受影响 */
+    margin:0; padding:0; 
+    word-wrap:break-word;/*允许长单词换行到下一行*/ 
+    
+    word-break:break-all;   
+    /* 在恰当的断字点进行换行 break-all：当前行一直填充，直到这行放不下为止 
+        break-strict:空格、胖  换行
+        keep-all:空格、 - 、胖哥  换
+        loose：胖换瘦不换
+        normal:胖换瘦不换
+        中文逗句号，英文全角---> 胖：换行
+        英文半角----> 瘦 不换行
+    */
+}
+body { /* 规范整个网站的样式 */
+    background:#FFF; 
+    color:#333; 
+    font:12px/1.6em Helvetica, Arial, sans-serif; 
+}
+a { 
+    color:#0287CA; 
+    text-decoration:none; 
+}
+a:hover { 
+    text-decoration:underline; 
+}
+ul, li { 
+    list-style:none; 
+}
+img { 
+    border:none; 
+}
+h1, h2, h3, h4, h5, h6 { 
+    font-size:1em; 
+}
+html { 
+    overflow:-moz-scrollbars-vertical; 
+} /* ��Firefox��ʼ����ʾ������*/
